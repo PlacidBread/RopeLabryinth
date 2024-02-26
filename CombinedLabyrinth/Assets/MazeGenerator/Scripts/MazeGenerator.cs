@@ -7,7 +7,7 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private MazeNode mazeNodePrefab;
     [SerializeField] private GameObject player;
-    [SerializeField] private CustomCameraController cameraController;
+    // [SerializeField] private Camera cameraController;
     private GameRespawn gameRespawn;
     private Rope rope;
 
@@ -28,6 +28,8 @@ public class MazeGenerator : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        // var camera = GetComponent<Camera>();
+        // var cameraController = camera.GetComponent<SmoothCameraController>();
         _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
         int scale = 2;
 
@@ -49,7 +51,7 @@ public class MazeGenerator : MonoBehaviour
         
         rope = player.GetComponent<Rope>();
         rope.StartRenderRope(spawnPos);
-        cameraController.Activate();
+        // cameraController.Activate();
     }
 
     private void GenerateExit()
