@@ -12,8 +12,8 @@ public class MazeGenerator : MonoBehaviour
     private Rope rope;
 
     [SerializeField] private int mazeWidth;
-
     [SerializeField] private int mazeHeight;
+    [SerializeField] private int mazeNodeScale = 2;
 
     private MazeNode[,] _mazeNodes;
     
@@ -28,16 +28,13 @@ public class MazeGenerator : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        // var camera = GetComponent<Camera>();
-        // var cameraController = camera.GetComponent<SmoothCameraController>();
         _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
-        int scale = 2;
 
         for (int i = 0; i < mazeWidth; i++)
         {
             for (int j = 0; j < mazeHeight; j++)
             {
-                _mazeNodes[i, j] = Instantiate(mazeNodePrefab, new Vector3(i*2, 0, j*2), Quaternion.identity);
+                _mazeNodes[i, j] = Instantiate(mazeNodePrefab, new Vector3(i*mazeNodeScale, 0, j*mazeNodeScale), Quaternion.identity);
                 _mazeNodes[i, j].SetIndex(i, j);
             }
         }
@@ -51,7 +48,7 @@ public class MazeGenerator : MonoBehaviour
         
         rope = player.GetComponent<Rope>();
         rope.StartRenderRope(spawnPos);
-        // cameraController.Activate();
+        SmoothCameraController.Activate();
     }
 
     private void GenerateExit()
