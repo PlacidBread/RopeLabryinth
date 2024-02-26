@@ -7,6 +7,7 @@ public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private MazeNode mazeNodePrefab;
     [SerializeField] private GameObject player;
+    [SerializeField] private CustomCameraController cameraController;
     private GameRespawn gameRespawn;
     private Rope rope;
 
@@ -28,12 +29,13 @@ public class MazeGenerator : MonoBehaviour
     IEnumerator Start()
     {
         _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
+        int scale = 2;
 
         for (int i = 0; i < mazeWidth; i++)
         {
             for (int j = 0; j < mazeHeight; j++)
             {
-                _mazeNodes[i, j] = Instantiate(mazeNodePrefab, new Vector3(i, 0, j), Quaternion.identity);
+                _mazeNodes[i, j] = Instantiate(mazeNodePrefab, new Vector3(i*2, 0, j*2), Quaternion.identity);
                 _mazeNodes[i, j].SetIndex(i, j);
             }
         }
@@ -47,6 +49,7 @@ public class MazeGenerator : MonoBehaviour
         
         rope = player.GetComponent<Rope>();
         rope.StartRenderRope(spawnPos);
+        cameraController.Activate();
     }
 
     private void GenerateExit()
@@ -101,9 +104,12 @@ public class MazeGenerator : MonoBehaviour
     // check surrounding cells
     private IEnumerable<MazeNode> GetUnvisitedNodes(MazeNode currNode)
     {
-        int x = (int)currNode.transform.position.x;
-        int z = (int)currNode.transform.position.z;
+        // int x = (int)currNode.transform.position.x;
+        // int z = (int)currNode.transform.position.z;
 
+        int x = (int)currNode.Index.x;
+        int z = (int)currNode.Index.y;
+        
         if (x + 1 < mazeWidth)
         {
             var cellToRight = _mazeNodes[x + 1, z];
