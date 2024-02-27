@@ -5,6 +5,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public GameOverScreen GameOverScreen;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField]float remainingTime;
     // Update is called once per frame
@@ -27,6 +28,6 @@ public class Timer : MonoBehaviour
 
     void TimerEnd()
     {
-        //Add what to do after timer is finsihed
+        GameOverScreen.Setup();
     }
 }
