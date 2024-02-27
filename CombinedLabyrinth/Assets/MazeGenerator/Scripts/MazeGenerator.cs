@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-    
+using StarterAssets;
+using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
+
 public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] private MazeNode mazeNodePrefab;
@@ -15,6 +19,8 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private int mazeHeight;
     [SerializeField] private int mazeNodeScale = 2;
 
+    private StarterAssetsInputs _input;
+    [SerializeField] private InputActionReference debugInput;
     private MazeNode[,] _mazeNodes;
     
     private enum ExitSide
@@ -24,10 +30,29 @@ public class MazeGenerator : MonoBehaviour
         Bottom,
         Left
     }
-    
+
+    // private void OnEnable()
+    // {
+    //     debugInput.action.performed += DebugFunction;
+    //     debugInput.action.Enable();
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     debugInput.action.performed -= DebugFunction;
+    //     debugInput.action.Disable();
+    // }
+
+    private void DebugFunction(InputAction.CallbackContext obj)
+    {
+        if (!rope.RenderRope) return;
+        rope.LogRopePos();
+    }
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        _input = GetComponent<StarterAssetsInputs>();
         _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
 
         for (int i = 0; i < mazeWidth; i++)
@@ -49,6 +74,10 @@ public class MazeGenerator : MonoBehaviour
         rope = player.GetComponent<Rope>();
         rope.StartRenderRope(spawnPos);
         SmoothCameraController.Activate();
+        ThirdPersonController.CanMove = true;
+        
+        debugInput.action.performed += DebugFunction;
+        debugInput.action.Enable();
     }
 
     private void GenerateExit()

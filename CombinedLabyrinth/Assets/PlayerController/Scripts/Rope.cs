@@ -31,6 +31,15 @@ public class Rope : MonoBehaviour
         if (ropePositions.Count > 2) DetectCollisionExits();
     }
 
+    public void LogRopePos()
+    {
+        foreach (var ropePos in ropePositions)
+        {
+            Debug.Log(ropePos);
+        }
+        Debug.Log(ropePositions.Count);
+    }
+    
     private void DetectCollisionEnter()
     {
         RaycastHit hit;
