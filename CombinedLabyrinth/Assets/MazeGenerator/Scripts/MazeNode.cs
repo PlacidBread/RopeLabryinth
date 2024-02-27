@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class MazeNode : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject leftWall;
-    [SerializeField]
-    private GameObject rightWall;
-    [SerializeField]
-    private GameObject frontWall;
-    [SerializeField]
-    private GameObject backWall;
-    [SerializeField]
-    private GameObject unvisitedBlock;
+    [SerializeField] private GameObject leftWall;
+    [SerializeField] private GameObject rightWall;
+    [SerializeField] private GameObject frontWall;
+    [SerializeField] private GameObject backWall;
+    [SerializeField] private GameObject unvisitedBlock;
+    
+    [SerializeField] private GameObject node;
     
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
@@ -43,6 +40,11 @@ public class MazeNode : MonoBehaviour
     public void ClearBackWall()
     {
         backWall.SetActive(false);
+    }
+
+    public void ClearAll()
+    {
+        node.SetActive(false);
     }
     
     public bool GetActiveLW()
