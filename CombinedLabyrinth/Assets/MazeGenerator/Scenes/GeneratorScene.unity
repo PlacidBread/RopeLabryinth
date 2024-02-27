@@ -189,6 +189,8 @@ MonoBehaviour:
   mazeWidth: 10
   mazeHeight: 10
   mazeNodeScale: 2
+  debugInput: {fileID: 3500834210469696977, guid: 4419d82f33d36e848b3ed5af4c8da37e,
+    type: 3}
 --- !u!4 &92561330
 Transform:
   m_ObjectHideFlags: 0
