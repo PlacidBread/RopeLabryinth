@@ -53,10 +53,10 @@ namespace MazeGenerator.Scripts
             GenerateExit();
         
             gameRespawn = player.GetComponent<GameRespawn>();
-            var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+            // var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
         
             rope = player.GetComponent<Rope>();
-            rope.StartRenderRope(spawnPos);
+            // rope.StartRenderRope(spawnPos);
             // rope.RenderRope();
             
             SmoothCameraController.Activate();
