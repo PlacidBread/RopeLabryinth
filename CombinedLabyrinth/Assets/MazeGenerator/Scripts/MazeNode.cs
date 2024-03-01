@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MazeNode : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class MazeNode : MonoBehaviour
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject frontWall;
     [SerializeField] private GameObject backWall;
+    [SerializeField] private GameObject torchLW;
+    [SerializeField] private GameObject torchRW;
+    [SerializeField] private GameObject torchFW;
+    [SerializeField] private GameObject torchBW;
     [SerializeField] private GameObject unvisitedBlock;
     
     [SerializeField] private GameObject node;
@@ -16,6 +21,21 @@ public class MazeNode : MonoBehaviour
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
 
+    public void SetTorch()
+    {
+        List<GameObject> activeWalls = new List<GameObject>();
+        if (GetActiveLW()) activeWalls.Add(leftWall);
+        if (GetActiveRW()) activeWalls.Add(rightWall);
+        if (GetActiveFW()) activeWalls.Add(frontWall);
+        if (GetActiveBW()) activeWalls.Add(backWall);
+
+        int random = Random.Range(0, activeWalls.Count);
+        if (activeWalls[random] == leftWall) torchLW.SetActive(true);
+        if (activeWalls[random] == rightWall) torchRW.SetActive(true);
+        if (activeWalls[random] == frontWall) torchFW.SetActive(true);
+        if (activeWalls[random] == backWall) torchBW.SetActive(true);
+    }
+    
     public void SetIndex(int i, int j)
     {
         Index = new Vector2Int(i, j);

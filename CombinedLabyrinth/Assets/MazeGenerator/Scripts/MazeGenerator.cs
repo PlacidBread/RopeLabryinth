@@ -22,8 +22,9 @@ namespace MazeGenerator.Scripts
         [SerializeField] private int mazeWidth;
         [SerializeField] private int mazeHeight;
         [SerializeField] private int mazeNodeScale = 2;
+        [SerializeField] private int torchSpawnGap = 4;
 
-        private StarterAssetsInputs _input;
+        private int _count = 0;
         [SerializeField] private InputActionReference debugInput;
         private MazeNode[,] _mazeNodes;
 
@@ -36,7 +37,7 @@ namespace MazeGenerator.Scripts
         // Start is called before the first frame update
         void Start()
         {
-            _input = GetComponent<StarterAssetsInputs>();
+            // _input = GetComponent<StarterAssetsInputs>();
             gameRespawn = player.GetComponent<GameRespawn>();
             if (gameRespawn is null)
             {
@@ -126,7 +127,13 @@ namespace MazeGenerator.Scripts
 
                 if (nextNode != null)
                 {
-                     GenerateMaze(currNode, nextNode);
+                    _count++;
+                    if (_count >= torchSpawnGap)
+                    {
+                        _count = 0;
+                        prevNode.SetTorch();
+                    }
+                    GenerateMaze(currNode, nextNode);
                 }
             } while (nextNode != null);
         }
