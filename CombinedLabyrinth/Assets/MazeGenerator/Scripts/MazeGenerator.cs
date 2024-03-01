@@ -37,6 +37,8 @@ namespace MazeGenerator.Scripts
         void Start()
         {
             _input = GetComponent<StarterAssetsInputs>();
+            gameRespawn = player.GetComponent<GameRespawn>();
+            if (gameRespawn is null)
             {
                 return;
             }
