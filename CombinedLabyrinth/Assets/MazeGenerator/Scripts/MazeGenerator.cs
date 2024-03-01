@@ -27,18 +27,6 @@ namespace MazeGenerator.Scripts
         [SerializeField] private InputActionReference debugInput;
         private MazeNode[,] _mazeNodes;
 
-        // private void OnEnable()
-        // {
-        //     debugInput.action.performed += DebugFunction;
-        //     debugInput.action.Enable();
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     debugInput.action.performed -= DebugFunction;
-        //     debugInput.action.Disable();
-        // }
-
         private void DebugFunction(InputAction.CallbackContext obj)
         {
             if (!rope.RenderRope) return;
@@ -69,6 +57,8 @@ namespace MazeGenerator.Scripts
         
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
+            // rope.RenderRope();
+            
             SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
         
@@ -290,69 +280,6 @@ namespace MazeGenerator.Scripts
                 // ClearDuplicateWalls(false, currNode);
                 return;
             }
-            // Clear walls based on direction
-            // if (direction.x > 0)
-            // {
-            //     prevNode.ClearRightWall();
-            //     currNode.ClearLeftWall();
-            //     Debug.Log("Clearing right wall of previous node and left wall of current node");
-            // }
-            // else if (direction.x < 0)
-            // {
-            //     prevNode.ClearLeftWall();
-            //     currNode.ClearRightWall();
-            //     Debug.Log("Clearing left wall of previous node and right wall of current node");
-            // }
-            // else if (direction.z > 0)
-            // {
-            //     prevNode.ClearFrontWall();
-            //     currNode.ClearBackWall();
-            //     Debug.Log("Clearing front wall of previous node and back wall of current node");
-            // }
-            // else if (direction.z < 0)
-            // {
-            //     prevNode.ClearBackWall();
-            //     currNode.ClearFrontWall();
-            //     Debug.Log("Clearing back wall of previous node and front wall of current node");
-            // }
-        
-            // Check if the neighboring nodes have been visited
-            // if (Mathf.Abs(diff.x) > 0)
-            // {
-            //     if (_mazeNodes[prevPosition.x + Mathf.RoundToInt(direction.x), prevPosition.z].IsVisited)
-            //     {
-            //         // Clear shared wall
-            //         currNode.ClearLeftWall();
-            //         Debug.Log("Clearing left wall of current node");
-            //     }
-            //     if (_mazeNodes[currPosition.x - Mathf.RoundToInt(direction.x), currPosition.z].IsVisited)
-            //     {
-            //         // Clear shared wall
-            //         prevNode.ClearRightWall();
-            //         Debug.Log("Clearing right wall of previous node");
-            //     }
-            // }
-            // else if (Mathf.Abs(diff.z) > 0)
-            // {
-            //     if (_mazeNodes[prevPosition.x, prevPosition.z + Mathf.RoundToInt(direction.z)].IsVisited)
-            //     {
-            //         // Clear shared wall
-            //         currNode.ClearBackWall();
-            //         Debug.Log("Clearing back wall of current node");
-            //     }
-            //     if (_mazeNodes[currPosition.x, currPosition.z - Mathf.RoundToInt(direction.z)].IsVisited)
-            //     {
-            //         // Clear shared wall
-            //         prevNode.ClearFrontWall();
-            //         Debug.Log("Clearing front wall of previous node");
-            //     }
-            // }
-        
-        }
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }
