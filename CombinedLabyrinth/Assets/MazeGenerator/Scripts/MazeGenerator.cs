@@ -34,9 +34,13 @@ namespace MazeGenerator.Scripts
         }
 
         // Start is called before the first frame update
-        IEnumerator Start()
+        void Start()
         {
             _input = GetComponent<StarterAssetsInputs>();
+            {
+                return;
+            }
+            
             _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
 
             for (int i = 0; i < mazeWidth; i++)
@@ -48,15 +52,15 @@ namespace MazeGenerator.Scripts
                 }
             }
 
-            yield return GenerateMaze(null, _mazeNodes[0, 0]);
+            GenerateMaze(null, _mazeNodes[0, 0]);
             LoopClearDuplicateWalls();
             GenerateExit();
-        
-            gameRespawn = player.GetComponent<GameRespawn>();
-            // var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+
+            
+            var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
         
             rope = player.GetComponent<Rope>();
-            // rope.StartRenderRope(spawnPos);
+            rope.StartRenderRope(spawnPos);
             // rope.RenderRope();
             
             SmoothCameraController.Activate();
@@ -105,12 +109,12 @@ namespace MazeGenerator.Scripts
             // TODO: Generate collider (& Door?) at exit position (var random range...)
         }
 
-        private IEnumerator GenerateMaze(MazeNode prevNode, MazeNode currNode)
+        private void GenerateMaze(MazeNode prevNode, MazeNode currNode)
         {
             currNode.Visit();
             ClearWalls(prevNode, currNode);
 
-            yield return new WaitForSeconds(0.05f);
+            // yield return new WaitForSeconds(0.05f);
 
             MazeNode nextNode;
 
@@ -120,7 +124,7 @@ namespace MazeGenerator.Scripts
 
                 if (nextNode != null)
                 {
-                    yield return GenerateMaze(currNode, nextNode);
+                     GenerateMaze(currNode, nextNode);
                 }
             } while (nextNode != null);
         }

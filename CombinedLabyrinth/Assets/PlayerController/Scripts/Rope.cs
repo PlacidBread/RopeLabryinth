@@ -14,10 +14,10 @@ public class Rope : MonoBehaviour
 
     // private void Awake() => AddPosToRope(Vector3.zero);
 
-    public void StartRenderRope(Vector2Int spawnPos)
+    public void StartRenderRope(Transform spawnPos)
     {
         RenderRope = true;
-        AddPosToRope(new Vector3(spawnPos.x, 0, spawnPos.y));
+        AddPosToRope(spawnPos.position);
     }
 
     private void Update()
