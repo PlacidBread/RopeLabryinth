@@ -19,8 +19,13 @@ public class GameOverScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void RestartButton()
+    public void MenuButton()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("GeneratorScene");
     }
 }
