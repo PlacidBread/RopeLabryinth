@@ -21,6 +21,7 @@ public class MazeNode : MonoBehaviour
     
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
+    private int chanceOfCoinSpawning = 20;
 
     public void SetTorch()
     {
@@ -35,6 +36,12 @@ public class MazeNode : MonoBehaviour
         if (activeWalls[random] == rightWall) torchRW.SetActive(true);
         if (activeWalls[random] == frontWall) torchFW.SetActive(true);
         if (activeWalls[random] == backWall) torchBW.SetActive(true);
+    }
+
+    public void SetCoin()
+    {
+        int random = Random.Range(1, 100);
+        if (random <= chanceOfCoinSpawning) coin.SetActive(true);
     }
     
     public void SetIndex(int i, int j)

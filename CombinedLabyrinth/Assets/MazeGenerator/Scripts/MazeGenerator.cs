@@ -133,6 +133,7 @@ namespace MazeGenerator.Scripts
                         _count = 0;
                         prevNode.SetTorch();
                     }
+                    currNode.SetCoin();
                     GenerateMaze(currNode, nextNode);
                 }
             } while (nextNode != null);

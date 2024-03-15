@@ -14,8 +14,30 @@ public class CoinCollection : MonoBehaviour
         if (collider.gameObject.CompareTag("Coin"))
         {
             coinCount++;
+            CoinTracker.incrementCoinCount();
             coinText.text = "Coins: " + coinCount;
             Destroy(collider.gameObject);
         }
    }
+
+  
 }
+ public static class CoinTracker 
+    {
+        private static int coinCount = 0;
+
+        public static int getCoinCount()
+        {
+            return coinCount;
+        }
+
+        public static void setCointCount(int setCoins)
+        {
+            coinCount = setCoins;
+        }
+
+        public static void incrementCoinCount()
+        {
+            coinCount++;
+        }
+    }
