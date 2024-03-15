@@ -4,19 +4,26 @@ using UnityEngine;
 public class Rope : MonoBehaviour
 {
     public Transform player;
-
     public LineRenderer rope;
     public LayerMask collMask;
 
-    public List<Vector3> ropePositions { get; set; } = new List<Vector3>();
+    // Use private field instead of auto-implemented property
+    private List<Vector3> ropePositions = new List<Vector3>();
 
-    public bool RenderRope { get; private set; } = false;
+    // Use private field instead of auto-implemented property
+    private bool renderRope = false;
 
-    // private void Awake() => AddPosToRope(Vector3.zero);
+    // Property to access renderRope value
+    public bool RenderRope
+    {
+        get { return renderRope; }
+        set { renderRope = value; }
+    }
 
+    // Method to start rendering the rope
     public void StartRenderRope(Transform spawnPos)
     {
-        RenderRope = true;
+        renderRope = true;
         AddPosToRope(spawnPos.position);
     }
 
@@ -31,6 +38,7 @@ public class Rope : MonoBehaviour
         if (ropePositions.Count > 2) DetectCollisionExits();
     }
 
+    // Method to log rope positions
     public void LogRopePos()
     {
         foreach (var ropePos in ropePositions)
@@ -62,7 +70,7 @@ public class Rope : MonoBehaviour
     private void AddPosToRope(Vector3 _pos)
     {
         ropePositions.Add(_pos);
-        ropePositions.Add(player.position); //Always the last pos must be the player
+        ropePositions.Add(player.position); // Always the last pos must be the player
     }
 
     private void UpdateRopePositions()
@@ -71,5 +79,8 @@ public class Rope : MonoBehaviour
         rope.SetPositions(ropePositions.ToArray());
     }
 
-    private void LastSegmentGoToPlayerPos() => rope.SetPosition(rope.positionCount - 1, player.position);
+    private void LastSegmentGoToPlayerPos()
+    {
+        rope.SetPosition(rope.positionCount - 1, player.position);
+    }
 }
