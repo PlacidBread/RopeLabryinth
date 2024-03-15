@@ -15,6 +15,7 @@ public class MazeNode : MonoBehaviour
     [SerializeField] private GameObject torchFW;
     [SerializeField] private GameObject torchBW;
     [SerializeField] private GameObject unvisitedBlock;
+    [SerializeField] private GameObject coin;
     
     [SerializeField] private GameObject node;
     
