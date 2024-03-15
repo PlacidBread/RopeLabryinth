@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameOverScreen : MonoBehaviour
 {
     GameObject player;
+    public TextMeshProUGUI coinText;
     public void Setup() {
         gameObject.SetActive(true);
         
@@ -17,6 +19,9 @@ public class GameOverScreen : MonoBehaviour
         //Enable curson
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        coinText.text = "COINS COLLECTED: " + CoinTracker.getCoinCount();
+        CoinTracker.setCointCount(0);
     }
 
     public void MenuButton()
