@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class Mainmenu : MonoBehaviour
 {
 
-    public void PlayGame () {
+    public void PlayGame () {       
 
+        CoinTracker.setCointCount(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
     }
