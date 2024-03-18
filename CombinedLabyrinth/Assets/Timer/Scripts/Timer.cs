@@ -7,11 +7,19 @@ public class Timer : MonoBehaviour
 {
     public GameOverScreen GameOverScreen;
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField]float remainingTime;
-    // Update is called once per frame
+    [SerializeField] float remainingTime;
+    public AudioClip gameOverMusic; 
+    private AudioSource audioSource; 
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
-        if (remainingTime > 0){
+        if (remainingTime > 0)
+        {
             remainingTime -= Time.deltaTime;
         }
 
@@ -20,7 +28,7 @@ public class Timer : MonoBehaviour
             remainingTime = 0;
             TimerEnd();
         }
-        
+
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
@@ -28,6 +36,12 @@ public class Timer : MonoBehaviour
 
     void TimerEnd()
     {
+        
+        if (gameOverMusic != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(gameOverMusic);
+        }
+
         GameOverScreen.Setup();
     }
 }
