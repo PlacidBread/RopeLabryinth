@@ -480,9 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379371b243ed40b4f8047b3fc13fad50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object1: {fileID: 2048055580}
-  object2: {fileID: 931292079}
-  lineRenderer: {fileID: 0}
 --- !u!4 &619792261
 Transform:
   m_ObjectHideFlags: 0
@@ -712,9 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd12c1a3a7f6bf944912e91654abe33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RigidbodyMass: 1
+  RigidbodyMass: 3
   ColliderRadius: 0.1
-  JointSpring: 0.1
+  JointSpring: 0.15
   JointDamper: 10
   RotationOffset: {x: 0, y: 0, z: 0}
   PositionOffset: {x: 0, y: 0, z: 0}
@@ -731,7 +728,7 @@ GameObject:
   - component: {fileID: 1547669413}
   - component: {fileID: 1547669412}
   m_Layer: 0
-  m_Name: swerqwe
+  m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

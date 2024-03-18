@@ -67,7 +67,7 @@ namespace MazeGenerator.Scripts
             rope.StartRenderRope(spawnPos);
             // rope.RenderRope();
             
-            SmoothCameraController.Activate();
+            // SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
         
             debugInput.action.performed += DebugFunction;
