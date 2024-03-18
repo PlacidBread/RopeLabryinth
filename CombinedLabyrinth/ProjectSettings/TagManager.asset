@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - Coin
+  - enemy
+  - Spike
   layers:
   - Default
   - TransparentFX

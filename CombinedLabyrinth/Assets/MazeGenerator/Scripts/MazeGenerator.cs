@@ -23,6 +23,7 @@ namespace MazeGenerator.Scripts
         [SerializeField] private int mazeHeight;
         [SerializeField] private int mazeNodeScale = 2;
         [SerializeField] private int torchSpawnGap = 4;
+        private bool occupied;
 
         private int _count = 0;
         [SerializeField] private InputActionReference debugInput;
@@ -114,13 +115,15 @@ namespace MazeGenerator.Scripts
 
         private void GenerateMaze(MazeNode prevNode, MazeNode currNode)
         {
+            occupied = false;
             currNode.Visit();
             ClearWalls(prevNode, currNode);
 
             // yield return new WaitForSeconds(0.05f);
 
             MazeNode nextNode;
-
+            if (occupied == false) occupied = currNode.SetCoin();
+            if (occupied == false) occupied = currNode.SetSpike();
             do
             {
                 nextNode = GetNextUnvisitedNode(currNode);
@@ -133,7 +136,7 @@ namespace MazeGenerator.Scripts
                         _count = 0;
                         prevNode.SetTorch();
                     }
-                    currNode.SetCoin();
+                    
                     GenerateMaze(currNode, nextNode);
                 }
             } while (nextNode != null);

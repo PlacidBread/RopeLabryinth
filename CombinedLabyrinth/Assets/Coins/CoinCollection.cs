@@ -18,6 +18,11 @@ public class CoinCollection : MonoBehaviour
             coinText.text = "Coins: " + coinCount;
             Destroy(collider.gameObject);
         }
+
+        if (collider.gameObject.CompareTag("Spike"))
+        {
+            Debug.Log("HIT");
+        }
    }
 
   
