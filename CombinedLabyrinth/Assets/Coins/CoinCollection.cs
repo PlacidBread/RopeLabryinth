@@ -7,8 +7,8 @@ public class CoinCollection : MonoBehaviour
 {
     private int coinCount;
     public TextMeshProUGUI coinText;
-    public AudioClip coinCollectSound; 
-    private AudioSource audioSource; 
+    public AudioClip coinCollectSound;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class CoinCollection : MonoBehaviour
             coinText.text = "Coins: " + coinCount;
             Destroy(collider.gameObject);
 
-           
+
             if (coinCollectSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(coinCollectSound);

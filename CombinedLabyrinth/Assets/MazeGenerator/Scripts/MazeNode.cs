@@ -16,12 +16,14 @@ public class MazeNode : MonoBehaviour
     [SerializeField] private GameObject torchBW;
     [SerializeField] private GameObject unvisitedBlock;
     [SerializeField] private GameObject coin;
+    [SerializeField] private GameObject spike;
     
     [SerializeField] private GameObject node;
     
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
     private int chanceOfCoinSpawning = 20;
+    private int chanceOfSpikeSpawning = 40;
 
     public void SetTorch()
     {
@@ -38,10 +40,26 @@ public class MazeNode : MonoBehaviour
         if (activeWalls[random] == backWall) torchBW.SetActive(true);
     }
 
-    public void SetCoin()
+    public bool SetCoin()
     {
         int random = Random.Range(1, 100);
-        if (random <= chanceOfCoinSpawning) coin.SetActive(true);
+        if (random <= chanceOfCoinSpawning)
+        {
+            coin.SetActive(true); 
+            return true;
+        }
+        return false;
+    }
+
+    public bool SetSpike()
+    {
+        int random = Random.Range(1, 100);
+        if (random <= chanceOfSpikeSpawning)
+        {
+            spike.SetActive(true); 
+            return true;
+        }
+        return false;
     }
     
     public void SetIndex(int i, int j)
