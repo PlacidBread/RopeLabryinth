@@ -21,6 +21,11 @@ public class CoinCollection : MonoBehaviour
 
         if (collider.gameObject.CompareTag("Spike"))
         {
+            if (coinCount > 0) {
+                coinCount--;
+                CoinTracker.decrementCoinCount();
+                coinText.text = "Coins: " + coinCount;
+            }
             Debug.Log("HIT");
         }
    }
@@ -44,5 +49,10 @@ public class CoinCollection : MonoBehaviour
         public static void incrementCoinCount()
         {
             coinCount++;
+        }
+
+        public static void decrementCoinCount()
+        {
+            coinCount--;
         }
     }
