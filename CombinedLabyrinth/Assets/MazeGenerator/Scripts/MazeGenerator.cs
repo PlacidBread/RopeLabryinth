@@ -109,7 +109,11 @@ namespace MazeGenerator.Scripts
             }
         
             _mazeNodes[index.x, index.y].ClearAll();
-            Instantiate(mazeNodeExitPrefab, new Vector3(index.x * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+            var mazeNodeExit = Instantiate(mazeNodeExitPrefab, new Vector3(index.x * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+            
+            mazeNodeExit.ActivateDoor(exitSide);
+            
+            mazeNodeExit.SetDoOpenDoor(true);
             // TODO: Generate collider (& Door?) at exit position (var random range...)
         }
 
@@ -198,39 +202,6 @@ namespace MazeGenerator.Scripts
                 }
             } 
         }
-
-        // private void ClearDuplicateWalls(bool isX, MazeNode currNode)
-        // {
-        //     var nodeIndex = currNode.Index;
-        //     if (isX)
-        //     {
-        //         if (nodeIndex.y > 0 && nodeIndex.y < mazeHeight - 1)
-        //         {
-        //             if (_mazeNodes[nodeIndex.x, nodeIndex.y + 1].GetActiveFW())
-        //             {
-        //                 currNode.ClearBackWall();
-        //             }
-        //             if (_mazeNodes[nodeIndex.x, nodeIndex.y - 1].GetActiveBW())
-        //             {
-        //                 currNode.ClearFrontWall();
-        //             }
-        //         }
-        //     }
-        //     else
-        //     {
-        //         if (nodeIndex.x > 0 && nodeIndex.x < mazeWidth - 1)
-        //         {
-        //             if (_mazeNodes[nodeIndex.x + 1, nodeIndex.y].GetActiveLW())
-        //             {
-        //                 currNode.ClearRightWall();
-        //             }
-        //             if (_mazeNodes[nodeIndex.x - 1, nodeIndex.y].GetActiveRW())
-        //             {
-        //                 currNode.ClearLeftWall();
-        //             }
-        //         }
-        //     }
-        // }
     
         private void LoopClearDuplicateWalls()
         {
