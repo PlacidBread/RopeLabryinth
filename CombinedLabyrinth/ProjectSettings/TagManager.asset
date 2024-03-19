@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - enemy
   - Spike
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,9 @@ public class MazeNode : MonoBehaviour
     [SerializeField] private GameObject unvisitedBlock;
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject spike;
+    [SerializeField] private GameObject button;
+
+    [SerializeField] private GameObject buttonPressed;
     
     [SerializeField] private GameObject node;
     
@@ -25,6 +28,18 @@ public class MazeNode : MonoBehaviour
     private int chanceOfCoinSpawning = 20;
     private int chanceOfSpikeSpawning = 40;
 
+    public void ButtonPressed()
+    {
+        var srcPosition = button.transform.position;
+        Destroy(button);
+        Instantiate(buttonPressed, srcPosition, Quaternion.identity);
+    }
+    
+    public void SetButton()
+    {
+        button.SetActive(true);
+    }
+    
     public void SetTorch()
     {
         List<GameObject> activeWalls = new List<GameObject>();

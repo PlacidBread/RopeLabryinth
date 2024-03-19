@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGenerator.Scripts.Enums;
 using StarterAssets;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.UI;
 using Random = UnityEngine.Random;
 
 namespace MazeGenerator.Scripts
@@ -28,6 +31,9 @@ namespace MazeGenerator.Scripts
         private int _count = 0;
         [SerializeField] private InputActionReference debugInput;
         private MazeNode[,] _mazeNodes;
+
+        private MazeNodeExit _mazeNodeExit;
+        private MazeNode _mazeNodeButton;
 
         private void DebugFunction(InputAction.CallbackContext obj)
         {
@@ -85,35 +91,40 @@ namespace MazeGenerator.Scripts
                 case ExitSide.Top:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, mazeHeight-1);
+                    _mazeNodeButton = _mazeNodes[mazeWidth - 1 - random, index.y];
                     // _mazeNodes[random, mazeHeight-1].ClearFrontWall();
                     // _mazeNodes[random, mazeHeight-1].ClearAll();
                     break;
                 case ExitSide.Right:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(mazeWidth-1, random);
-                    // _mazeNodes[mazeWidth-1, random].ClearRightWall();
+                    _mazeNodeButton = _mazeNodes[index.x, mazeHeight - 1 - random];
+                    // _mazeNodes[mazeWidth-1, random].ClearRightWall();ds
                     // _mazeNodes[mazeWidth-1, random].ClearAll();
                     break;
                 case ExitSide.Bottom:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, 0);
+                    _mazeNodeButton = _mazeNodes[mazeWidth - 1 - random, index.y];
                     // _mazeNodes[random, 0].ClearBackWall();
                     // _mazeNodes[random, 0].ClearAll();
                     break;
                 case ExitSide.Left:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(0, random);
+                    _mazeNodeButton = _mazeNodes[index.x, mazeHeight - 1 - random];
                     // _mazeNodes[0, random].ClearLeftWall();
                     // _mazeNodes[0, random].ClearAll();
                     break;
             }
         
             _mazeNodes[index.x, index.y].ClearAll();
-            var mazeNodeExit = Instantiate(mazeNodeExitPrefab, new Vector3(index.x * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+            _mazeNodeExit = Instantiate(mazeNodeExitPrefab, new Vector3(index.x * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
             
-            mazeNodeExit.ActivateDoor(exitSide);
+            _mazeNodeButton.SetButton();
+            _mazeNodeExit.ActivateDoor(exitSide);
             
-            mazeNodeExit.SetDoOpenDoor(true);
+            // mazeNodeExit.SetDoOpenDoor(true);
             // TODO: Generate collider (& Door?) at exit position (var random range...)
         }
 
@@ -268,6 +279,14 @@ namespace MazeGenerator.Scripts
                 // ClearDuplicateWalls(false, currNode);
                 return;
             }
+        }
+
+        public void ButtonPressed()
+        {
+            // add delay before door opens?
+            _mazeNodeExit.SetDoOpenDoor(true);
+            _mazeNodeButton.ButtonPressed();
+            Debug.Log("Succ");
         }
     }
 }
