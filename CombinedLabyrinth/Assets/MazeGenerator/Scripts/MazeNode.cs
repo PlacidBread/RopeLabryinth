@@ -19,9 +19,11 @@ public class MazeNode : MonoBehaviour
     [SerializeField] private GameObject spike;
     [SerializeField] private GameObject button;
 
-    [SerializeField] private GameObject buttonPressed;
+    [SerializeField] private GameObject buttonPressedPrefab;
     
     [SerializeField] private GameObject node;
+
+    private GameObject _buttonPressed;
     
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
@@ -32,11 +34,20 @@ public class MazeNode : MonoBehaviour
     {
         var srcPosition = button.transform.position;
         Destroy(button);
-        Instantiate(buttonPressed, srcPosition, Quaternion.identity);
+        _buttonPressed = Instantiate(buttonPressedPrefab, srcPosition, Quaternion.identity);
     }
-    
+
+    private void OnDestroy()
+    {
+        if (_buttonPressed is not null)
+        {
+            Destroy(_buttonPressed);
+        }
+    }
+
     public void SetButton()
     {
+        Debug.Log(Index);
         button.SetActive(true);
     }
     

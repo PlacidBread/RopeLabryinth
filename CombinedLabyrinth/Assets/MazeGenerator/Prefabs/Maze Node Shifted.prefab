@@ -1113,7 +1113,7 @@ MonoBehaviour:
   coin: {fileID: 1980541419966369976}
   spike: {fileID: 6846922089635538043}
   button: {fileID: 1446240528795009773}
-  buttonPressed: {fileID: 7387634597658894551, guid: f9f74d8449d79fb4ab17d496b97f3be2,
+  buttonPressedPrefab: {fileID: 7387634597658894551, guid: f9f74d8449d79fb4ab17d496b97f3be2,
     type: 3}
   node: {fileID: 6943731652263055182}
   Index: {x: 0, y: 0}

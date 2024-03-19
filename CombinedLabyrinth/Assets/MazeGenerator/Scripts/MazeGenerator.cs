@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGenerator.Scripts.Enums;
 using StarterAssets;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.UI;
 using Random = UnityEngine.Random;
 
 namespace MazeGenerator.Scripts
@@ -17,6 +13,7 @@ namespace MazeGenerator.Scripts
     {
         [SerializeField] private MazeNode mazeNodePrefab;
         [SerializeField] private MazeNodeExit mazeNodeExitPrefab;
+        [SerializeField] private GameObject endColliderPrefab;
         [SerializeField] private GameObject player;
         // [SerializeField] private Camera cameraController;
         private GameRespawn gameRespawn;
@@ -24,14 +21,15 @@ namespace MazeGenerator.Scripts
 
         [SerializeField] private int mazeWidth;
         [SerializeField] private int mazeHeight;
-        [SerializeField] private int mazeNodeScale = 2;
-        [SerializeField] private int torchSpawnGap = 4;
+        [SerializeField] private int mazeNodeScale = 4;
+        [SerializeField] private int torchSpawnGap = 3;
         private bool occupied;
 
         private int _count = 0;
         [SerializeField] private InputActionReference debugInput;
         private MazeNode[,] _mazeNodes;
 
+        private GameObject _endCollider;
         private MazeNodeExit _mazeNodeExit;
         private MazeNode _mazeNodeButton;
 
@@ -48,9 +46,15 @@ namespace MazeGenerator.Scripts
             gameRespawn = player.GetComponent<GameRespawn>();
             if (gameRespawn is null)
             {
+                Debug.Log("Error");
                 return;
             }
-            
+
+            SetupMaze();
+        }
+
+        private void SetupMaze()
+        {
             _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
 
             for (int i = 0; i < mazeWidth; i++)
@@ -79,42 +83,82 @@ namespace MazeGenerator.Scripts
             debugInput.action.performed += DebugFunction;
             debugInput.action.Enable();
         }
+        
 
         private void GenerateExit()
         {
-            ExitSide exitSide = (ExitSide)Random.Range(0, 5);
+            ExitSide exitSide = (ExitSide)Random.Range(0, 4);
             int random;
             Vector2Int index = new Vector2Int();
-        
-            switch (exitSide)
+            // GameObject endCol;
+            // Vector3 euler;
+            int buttonIndex = 0;
+            
+            switch ((ExitSide)exitSide)
             {
                 case ExitSide.Top:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, mazeHeight-1);
-                    _mazeNodeButton = _mazeNodes[mazeWidth - 1 - random, index.y];
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y + 1) * mazeNodeScale), quaternion.identity);
+                    buttonIndex = mazeWidth - 1 - random;
+                    if (buttonIndex == random)
+                    {
+                        buttonIndex++;
+                    }
+                    _mazeNodeButton = _mazeNodes[buttonIndex, index.y];
                     // _mazeNodes[random, mazeHeight-1].ClearFrontWall();
                     // _mazeNodes[random, mazeHeight-1].ClearAll();
                     break;
                 case ExitSide.Right:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(mazeWidth-1, random);
-                    _mazeNodeButton = _mazeNodes[index.x, mazeHeight - 1 - random];
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x + 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+                    // euler = endCol.transform.eulerAngles;
+                    // endCol.transform.rotation = quaternion.Euler(euler.x, euler.y + 90, euler.z);
+                    _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
+                    buttonIndex = mazeHeight - 1 - random;
+                    if (buttonIndex == random)
+                    {
+                        buttonIndex++;
+                    }
+                    _mazeNodeButton = _mazeNodes[index.x, buttonIndex];
                     // _mazeNodes[mazeWidth-1, random].ClearRightWall();ds
                     // _mazeNodes[mazeWidth-1, random].ClearAll();
                     break;
                 case ExitSide.Bottom:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, 0);
-                    _mazeNodeButton = _mazeNodes[mazeWidth - 1 - random, index.y];
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y - 1) * mazeNodeScale), quaternion.identity);
+                    
+                    buttonIndex = mazeWidth - 1 - random;
+                    if (buttonIndex == random)
+                    {
+                        buttonIndex++;
+                    }
+                    _mazeNodeButton = _mazeNodes[buttonIndex, index.y];
                     // _mazeNodes[random, 0].ClearBackWall();
                     // _mazeNodes[random, 0].ClearAll();
                     break;
                 case ExitSide.Left:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(0, random);
-                    _mazeNodeButton = _mazeNodes[index.x, mazeHeight - 1 - random];
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x - 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+                    // euler = endCol.transform.eulerAngles;
+                    // endCol.transform.rotation = quaternion.Euler(euler.x, euler.y+90, euler.z);
+                    _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
+                    buttonIndex = mazeHeight - 1 - random;
+                    if (buttonIndex == random)
+                    {
+                        buttonIndex++;
+                    }
+                    _mazeNodeButton = _mazeNodes[index.x, buttonIndex];
+                    
                     // _mazeNodes[0, random].ClearLeftWall();
                     // _mazeNodes[0, random].ClearAll();
+                    break;
+                default:
+                    _mazeNodeButton = _mazeNodes[0, 0];
+                    Debug.Log("WARNING - default switch result on mazeGenerator");
                     break;
             }
         
@@ -124,7 +168,6 @@ namespace MazeGenerator.Scripts
             _mazeNodeButton.SetButton();
             _mazeNodeExit.ActivateDoor(exitSide);
             
-            // mazeNodeExit.SetDoOpenDoor(true);
             // TODO: Generate collider (& Door?) at exit position (var random range...)
         }
 
@@ -286,7 +329,36 @@ namespace MazeGenerator.Scripts
             // add delay before door opens?
             _mazeNodeExit.SetDoOpenDoor(true);
             _mazeNodeButton.ButtonPressed();
-            Debug.Log("Succ");
+            // Debug.Log("Succ");
+        }
+        
+        /// Difficulty scaling with level:
+        ///     - mazeWidth * 2 and mazeHeight * 2
+        public void EndReached()
+        {
+            // TODO: End screen?
+            mazeWidth *= 2;
+            mazeHeight *= 2;
+            ClearMaze();
+            // SetupMaze();
+        }
+
+        private void ClearMaze()
+        {
+            // for (int i = mazeWidth - 1; i >= 0; i--)
+            // {
+            //     for (int j = mazeHeight - 1; j >= 0; j--)
+            //     {
+            //         Destroy(_mazeNodes[i, j]);
+            //    }
+            // }
+            foreach (var mazeNode in _mazeNodes)
+            {
+                Destroy(mazeNode.gameObject);
+            }
+            Destroy(_mazeNodeExit.gameObject);
+            Destroy(_endCollider.gameObject);
+            // Destroy(_mazeNodeButton);
         }
     }
 }
