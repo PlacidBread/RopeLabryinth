@@ -30,6 +30,19 @@ public class CoinCollection : MonoBehaviour
                 audioSource.PlayOneShot(coinCollectSound);
             }
         }
+
+        if (collider.gameObject.CompareTag("Spike"))
+        {
+            if (coinCount > 0)
+            {
+                coinCount--;
+                CoinTracker.decrementCoinCount();
+                coinText.text = "Coins: " + coinCount;
+                Debug.Log("HIT");
+
+
+            }
+        }
     }
 }
 
@@ -50,5 +63,10 @@ public static class CoinTracker
     public static void incrementCoinCount()
     {
         coinCount++;
+    }
+
+    public static void decrementCoinCount()
+    {
+        coinCount--;
     }
 }
