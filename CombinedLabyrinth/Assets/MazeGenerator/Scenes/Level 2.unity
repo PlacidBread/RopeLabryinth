@@ -324,7 +324,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 92561328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9092c2644fa7df64e8df0a4baaf6b5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 65c4711554cc38d4ba6fb6484f024623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mazeNodePrefab: {fileID: 5389656480988766955, guid: 4af950b89990b9e45b9294205446d372,
@@ -334,11 +334,11 @@ MonoBehaviour:
   endColliderPrefab: {fileID: 8610816289571229644, guid: ed51ffa2e2dbfeb48b11d521f291eb93,
     type: 3}
   player: {fileID: 1473114301}
-  mazeWidth: 15
-  mazeHeight: 15
+  mazeWidth: 10
+  mazeHeight: 10
   mazeNodeScale: 4
   torchSpawnGap: 3
-  startingMaxRopeLength: 50
+  startingMaxRopeLength: 100
   debugInput: {fileID: 0}
 --- !u!1 &300348698
 GameObject:

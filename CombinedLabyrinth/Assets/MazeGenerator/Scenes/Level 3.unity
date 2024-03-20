@@ -319,11 +319,11 @@ MonoBehaviour:
   endColliderPrefab: {fileID: 8610816289571229644, guid: ed51ffa2e2dbfeb48b11d521f291eb93,
     type: 3}
   player: {fileID: 1473114301}
-  mazeWidth: 5
-  mazeHeight: 5
+  mazeWidth: 12
+  mazeHeight: 12
   mazeNodeScale: 4
   torchSpawnGap: 4
-  startingMaxRopeLength: 40
+  startingMaxRopeLength: 120
   debugInput: {fileID: 3500834210469696977, guid: 4419d82f33d36e848b3ed5af4c8da37e,
     type: 3}
 --- !u!4 &92561330
