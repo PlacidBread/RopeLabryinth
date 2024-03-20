@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -6,16 +5,14 @@ using MazeGenerator.Scripts.Enums;
 using Mono.Cecil.Cil;
 using StarterAssets;
 using Unity.Mathematics;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 
 namespace MazeGenerator.Scripts
 {
-    public class MazeGenerator : MonoBehaviour
+    public class MazeGenerator3 : MonoBehaviour
     {
         [SerializeField] private MazeNode mazeNodePrefab;
         [SerializeField] private MazeNodeExit mazeNodeExitPrefab;
@@ -57,8 +54,8 @@ namespace MazeGenerator.Scripts
                 Debug.Log("Error");
                 return;
             }
-            
-            rope = player.GetComponent<Rope>();
+
+
         
             // SmoothCameraController.Activate();
             // ThirdPersonController.CanMove = true;
@@ -67,7 +64,6 @@ namespace MazeGenerator.Scripts
 
         private void SetupMaze()
         {
-            rope.StopRendering();
             _mazeNodes = new MazeNode[mazeWidth, mazeHeight];
 
             for (int i = 0; i < mazeWidth; i++)
@@ -81,35 +77,22 @@ namespace MazeGenerator.Scripts
 
             var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
             spawn = spawnPos;
-    
+
             GenerateMaze(null, _mazeNodes[0, 0]);
             LoopClearDuplicateWalls();
             GenerateExit();
-
 
             
             
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
             rope.SetMaxRopeLength(startingMaxRopeLength);
-            
-            StartCoroutine(RenderRope(spawnPos));
             
             SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
         
             debugInput.action.performed += DebugFunction;
             debugInput.action.Enable();
-        }
-        
-        private IEnumerator RenderRope(Transform spawnPos) 
-        {
-            // Debug.Log(spawnPos.position);
-            rope = player.GetComponent<Rope>();
-            rope.ClearOldRope();
-            yield return new WaitForSeconds(0.1f);
-            rope.StartRenderRope(spawnPos);
-            rope.SetMaxRopeLength(startingMaxRopeLength);
         }
         
 
@@ -196,6 +179,7 @@ namespace MazeGenerator.Scripts
             _mazeNodeButton.SetButton();
             _mazeNodeExit.ActivateDoor(exitSide);
             
+            // TODO: Generate collider (& Door?) at exit position (var random range...)
         }
 
         private void GenerateMaze(MazeNode prevNode, MazeNode currNode)
