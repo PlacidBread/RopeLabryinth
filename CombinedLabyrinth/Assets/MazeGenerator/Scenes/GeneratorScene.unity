@@ -1580,6 +1580,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b8dc800af495d4946821a16d9f7843ea, type: 2}
     - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 481844129}
+    - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
       propertyPath: collMask.m_Bits
       value: 1
       objectReference: {fileID: 0}
@@ -2211,7 +2216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1521307832
 RectTransform:
   m_ObjectHideFlags: 0
