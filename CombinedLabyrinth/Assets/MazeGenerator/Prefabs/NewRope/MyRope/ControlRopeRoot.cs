@@ -1,19 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlRopeRoot : MonoBehaviour
 {
+    public Transform player;
+    public Camera camera;
+
+    public float followPointAdjust = 0.001f;
+
+    private Vector3 _followpoint;
     void Awake()
     {
-        // if(RigidBodyContainer == null)
-        //     RigidBodyContainer = new GameObject("RopeRigidbodyContainer");
-        //
-        // CopySource = new List<Transform>();
-        // CopyDestination = new List<Transform>();
+        // Physics.IgnoreCollision(player.parent.GetComponent<Collider>(), GetComponent<Collider>());
+        Physics.IgnoreLayerCollision(8, 8);
+        transform.position = player.position;
 
-        //add children
-        AddChildren(transform);
+        // AddChildren(transform);
+    }
+
+    private void Update()
+    {
+        UpdateFollowPoint();
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = _followpoint;
+    }
+
+    private void UpdateFollowPoint()
+    {
+        // var ab = player.position - camera.transform.position;
+        // var normalAB = ab.normalized;
+        var x = 0.1f;
+        Vector3 P = x * Vector3.Normalize(camera.transform.position - player.position) + player.position;
+        _followpoint = P;
     }
 
     private void AddChildren(Transform parent)

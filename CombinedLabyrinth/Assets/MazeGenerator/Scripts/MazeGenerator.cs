@@ -49,7 +49,9 @@ namespace MazeGenerator.Scripts
                 Debug.Log("Error");
                 return;
             }
-
+        
+            // SmoothCameraController.Activate();
+            // ThirdPersonController.CanMove = true;
             SetupMaze();
         }
 
@@ -75,7 +77,6 @@ namespace MazeGenerator.Scripts
         
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
-            // rope.RenderRope();
             
             SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
