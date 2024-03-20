@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CoinCollection : MonoBehaviour
+public class PlayerCollisions : MonoBehaviour
 {
     private int coinCount;
     public TextMeshProUGUI coinText;
@@ -18,6 +18,8 @@ public class CoinCollection : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         invincible = true;
+        coinCount = CoinTracker.getCoinCount();
+        coinText.text = "Coins: " + coinCount;
     }
 
     void Update()
@@ -74,27 +76,27 @@ public class CoinCollection : MonoBehaviour
     }
 }
 
-public static class CoinTracker
-{
-    private static int coinCount = 0;
+// public static class CoinTracker
+// {
+//     private static int coinCount = 0;
 
-    public static int getCoinCount()
-    {
-        return coinCount;
-    }
+//     public static int getCoinCount()
+//     {
+//         return coinCount;
+//     }
 
-    public static void setCointCount(int setCoins)
-    {
-        coinCount = setCoins;
-    }
+//     public static void setCointCount(int setCoins)
+//     {
+//         coinCount = setCoins;
+//     }
 
-    public static void incrementCoinCount()
-    {
-        coinCount++;
-    }
+//     public static void incrementCoinCount()
+//     {
+//         coinCount++;
+//     }
 
-    public static void decrementCoinCount()
-    {
-        coinCount--;
-    }
-}
+//     public static void decrementCoinCount()
+//     {
+//         coinCount--;
+//     }
+// }
