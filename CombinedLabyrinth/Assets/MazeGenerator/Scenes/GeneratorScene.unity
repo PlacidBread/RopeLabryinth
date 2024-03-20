@@ -1868,6 +1868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 1210913814}
+  deathText: {fileID: 1521307833}
   coinCollectSound: {fileID: 8300000, guid: ea606d47ce3680342910cecf0babfd1d, type: 3}
   GameOverScreen: {fileID: 481844129}
   invincibilityTimer: 1
@@ -2120,7 +2121,7 @@ MonoBehaviour:
   timerText: {fileID: 941889516}
   remainingTime: 300
   gameOverMusic: {fileID: 8300000, guid: 99945ad2a8ab183479a238d922b93ecb, type: 3}
-  deathText: {fileID: 0}
+  deathText: {fileID: 1521307833}
 --- !u!82 &1503448683
 AudioSource:
   m_ObjectHideFlags: 0
