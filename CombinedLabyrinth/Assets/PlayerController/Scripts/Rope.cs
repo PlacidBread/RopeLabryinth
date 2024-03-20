@@ -192,4 +192,9 @@ public class Rope : MonoBehaviour
         _ropePositions.Clear();
         UpdateRopePositions();
     }
+
+    public float GetRopeLength()
+    {
+        return _ropeLength;
+    }
 }

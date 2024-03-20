@@ -41,12 +41,21 @@ namespace MazeGenerator.Scripts
         private MazeNodeExit _mazeNodeExit;
         private MazeNode _mazeNodeButton;
         private GameObject _ropeBarrel;
+        private float _ropeLength;
         private Transform spawn;
 
         private void DebugFunction(InputAction.CallbackContext obj)
         {
             if (!rope.RenderRope) return;
             rope.LogRopePos();
+        }
+
+        void Update()
+        {
+            if (_ropeBarrel is not null)
+            {
+                RotateRopeBarrel();
+            }
         }
 
         // Start is called before the first frame update
@@ -102,6 +111,18 @@ namespace MazeGenerator.Scripts
         
             // debugInput.action.performed += DebugFunction;
             // debugInput.action.Enable();
+        }
+
+        private void RotateRopeBarrel()
+        {
+            var currLength = rope.GetRopeLength();
+            var diff = currLength - _ropeLength;
+            if (diff > 0)
+            {
+                _ropeBarrel.transform.Rotate(new Vector3(0, 150*diff, 0));
+            }
+
+            _ropeLength = currLength;
         }
         
         private IEnumerator RenderRope(Transform spawnTrans) 
