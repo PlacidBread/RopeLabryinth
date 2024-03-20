@@ -131,7 +131,7 @@ namespace MazeGenerator.Scripts
             rope = player.GetComponent<Rope>();
             rope.ClearOldRope();
             yield return new WaitForSeconds(0.1f);
-            spawnTrans.position = new Vector3(spawnTrans.position.x, spawnTrans.position.y + 0.55f, spawnTrans.position.z);
+            // spawnTrans.position = new Vector3(spawnTrans.position.x, spawnTrans.position.y+0.55f, spawnTrans.position.z);
             rope.StartRenderRope(spawnTrans);
             rope.SetMaxRopeLength(startingMaxRopeLength);
         }

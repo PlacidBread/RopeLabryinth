@@ -66,11 +66,6 @@ public class Rope : MonoBehaviour
         _ropePositions = newParts;
         UpdateRopePositions();
     }
-
-    // private IEnumerator BreakRope()
-    // {
-    //
-    // }
     
     private void CheckRopeLength()
     {
