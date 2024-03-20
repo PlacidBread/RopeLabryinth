@@ -1603,7 +1603,8 @@ PrefabInstance:
       propertyPath: materialSuperStretched
       value: 
       objectReference: {fileID: 2100000, guid: 41d1c06b602bbf048846c6b223a428a6, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5885216827943657505, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!1 &1298453505
 GameObject:

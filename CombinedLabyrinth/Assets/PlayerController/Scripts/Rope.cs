@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -21,7 +22,8 @@ public class Rope : MonoBehaviour
 
     
     // Use private field instead of auto-implemented property
-    private List<Vector3> ropePositions = new List<Vector3>();
+    private List<Vector3> _ropePositions = new List<Vector3>();
+    private bool _breakRopeParts;
 
     // Method to start rendering the rope
     public bool RenderRope { get; private set; } = false;
@@ -41,24 +43,42 @@ public class Rope : MonoBehaviour
     
     private void Update()
     {
+        if (_breakRopeParts) BreakRopeParts();
         if (!RenderRope) return;
         
         UpdateRopePositions();
         LastSegmentGoToPlayerPos();
     
         DetectCollisionEnter();
-        if (ropePositions.Count > 2) DetectCollisionExits();
+        if (_ropePositions.Count > 2) DetectCollisionExits();
         
         CheckRopeLength();
     }
 
+    private void BreakRopeParts()
+    {
+        var newParts = new List<Vector3>();
+        foreach (var ropePos in _ropePositions)
+        {   
+            newParts.Add(Vector3.MoveTowards(ropePos, player.position, 0.1f));
+        }
+
+        _ropePositions = newParts;
+        UpdateRopePositions();
+    }
+
+    // private IEnumerator BreakRope()
+    // {
+    //
+    // }
+    
     private void CheckRopeLength()
     {
-        if (ropePositions.Count < 2) return;
+        if (_ropePositions.Count < 2) return;
         
         _ropeLength = 0.0f;
-        Vector3 prevPoint = ropePositions[0];
-        foreach (var ropePoint in ropePositions)
+        Vector3 prevPoint = _ropePositions[0];
+        foreach (var ropePoint in _ropePositions)
         {
             _ropeLength += Vector3.Distance(prevPoint, ropePoint);
             prevPoint = ropePoint;
@@ -69,7 +89,12 @@ public class Rope : MonoBehaviour
         if (_ropeLength > _maxRopeLength)
         {
             // TODO: break rope (animation?) - GAME OVER
+
             deathText.text = "ROPE SNAPPED";
+
+            _breakRopeParts = true;
+            rope.material = materialBasic;
+            
             gameOverScreen.Setup();
         }
         else if (_ropeLength > (_maxRopeLength * 0.9))
@@ -95,17 +120,17 @@ public class Rope : MonoBehaviour
         // {
         //     Debug.Log(ropePos);
         // }
-        Debug.Log(ropePositions.Count);
+        Debug.Log(_ropePositions.Count);
     }
     
     private void DetectCollisionEnter()
     {
         RaycastHit hit;
-        if (Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 2), out hit, collMask))
+        if (Physics.Linecast(player.position, rope.GetPosition(_ropePositions.Count - 2), out hit, collMask))
         {
             // if (ropePositions.Contains(hit.point)) return;
             if (ContainsSimilar(hit.point)) return;
-            ropePositions.RemoveAt(ropePositions.Count - 1); // remove player pos temporarily
+            _ropePositions.RemoveAt(_ropePositions.Count - 1); // remove player pos temporarily
             AddPosToRope(hit.point);
         }
     }
@@ -118,33 +143,23 @@ public class Rope : MonoBehaviour
         // {
         //     ropePositions.RemoveAt(ropePositions.Count - 2);
         // }
-        if (Vector3.Distance(player.position, rope.GetPosition(ropePositions.Count - 3)) <= 2.5f)
+        if (Vector3.Distance(player.position, rope.GetPosition(_ropePositions.Count - 3)) <= 2.5f)
         {
-            Debug.Log("test");
-            ropePositions.RemoveAt(ropePositions.Count - 2);
+            // Debug.Log("test");
+            _ropePositions.RemoveAt(_ropePositions.Count - 2);
         }
-
-        // for (int i = 1; i < ropePositions.Count - 2; i++)
-        // {
-        //     Debug.Log(Vector3.Distance(player.position, ropePositions[i]));
-        //     if (Vector3.Distance(player.position, ropePositions[i]) <= 2f)
-        //     {
-        //         Debug.Log("test");
-        //         ropePositions.RemoveAt(i);
-        //     }
-        // }
     }
-    
+
     private void AddPosToRope(Vector3 _pos)
     {
-        ropePositions.Add(_pos);
-        ropePositions.Add(player.position); // Always the last pos must be the player
+        _ropePositions.Add(_pos);
+        _ropePositions.Add(player.position); // Always the last pos must be the player
     }
     
     private void UpdateRopePositions()
     {
-        rope.positionCount = ropePositions.Count;
-        rope.SetPositions(ropePositions.ToArray());
+        rope.positionCount = _ropePositions.Count;
+        rope.SetPositions(_ropePositions.ToArray());
     }
 
     private void LastSegmentGoToPlayerPos()
@@ -154,7 +169,7 @@ public class Rope : MonoBehaviour
 
     private bool ContainsSimilar(Vector3 newPos)
     {
-        foreach (var pos in ropePositions)
+        foreach (var pos in _ropePositions)
         {
             Vector3 diff = new Vector3(Math.Abs(pos.x - newPos.x), Math.Abs(pos.y - newPos.y),
                 Math.Abs(pos.z - newPos.z));
@@ -170,5 +185,11 @@ public class Rope : MonoBehaviour
     public void SetMaxRopeLength(float ropeLength)
     {
         _maxRopeLength = ropeLength;
+    }
+
+    public void ClearOldRope()
+    {
+        _ropePositions.Clear();
+        UpdateRopePositions();
     }
 }

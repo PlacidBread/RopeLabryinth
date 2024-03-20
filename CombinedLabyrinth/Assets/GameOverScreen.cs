@@ -31,6 +31,14 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartButton()
     {
+        // SceneManager.UnloadSceneAsync("GeneratorScene");
+        StartCoroutine(RestartLoad());
+    }
+    
+    private IEnumerator RestartLoad() 
+    {
+        yield return new WaitForSeconds(0.1f);
+        // Reset the player here
         SceneManager.LoadScene("GeneratorScene");
     }
 }

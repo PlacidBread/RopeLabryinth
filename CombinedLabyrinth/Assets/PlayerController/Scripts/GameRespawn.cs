@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameRespawn : MonoBehaviour
 {
+    [SerializeField] private CharacterController playerController;
     private Transform spawnPoint { get; set; }
 
     // [SerializeField] private CharacterController characterController; 
@@ -27,12 +30,16 @@ public class GameRespawn : MonoBehaviour
         int y = Random.Range(0 + PaddingDepth, (mazeHeight-1) - PaddingDepth);
         spawnPoint = mazeNodes[x, y].transform;
         
-        Respawn();
+        StartCoroutine(Respawn());
         return spawnPoint;
     }
     
-    private void Respawn() 
-    { 
-        transform.position = spawnPoint.position; 
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(0.01f);
+        Debug.Log("-" + transform.position);
+        playerController.enabled = false;
+        playerController.transform.position = spawnPoint.position;
+        playerController.enabled = true;
     } 
 }
