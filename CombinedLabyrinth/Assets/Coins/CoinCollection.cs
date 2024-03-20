@@ -10,10 +10,27 @@ public class CoinCollection : MonoBehaviour
     public AudioClip coinCollectSound;
     private AudioSource audioSource;
     public GameOverScreen GameOverScreen;
+    [SerializeField] float invincibilityTimer;
+    private bool invincible;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        invincible = true;
+    }
+
+    void Update()
+    {
+        if (invincibilityTimer > 0)
+        {
+            invincibilityTimer -= Time.deltaTime;
+        }
+
+        if (invincibilityTimer <= 0)
+        {
+            invincibilityTimer = 0;
+            invincible = false;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -34,6 +51,13 @@ public class CoinCollection : MonoBehaviour
 
         if (collider.gameObject.CompareTag("Spike"))
         {
+
+            if (coinCount <= 0 && !invincible)
+            {
+                GameOverScreen.Setup();
+                Debug.Log("GAMEOVER");
+            }
+
             if (coinCount > 0)
             {
                 coinCount--;
@@ -43,10 +67,7 @@ public class CoinCollection : MonoBehaviour
 
 
             } 
-            else
-            {
-                //GameOverScreen.Setup();
-            }
+            
         }
     }
 }

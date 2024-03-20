@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using MazeGenerator.Scripts.Enums;
+using Mono.Cecil.Cil;
 using StarterAssets;
 using Unity.Mathematics;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace MazeGenerator.Scripts
         private GameObject _endCollider;
         private MazeNodeExit _mazeNodeExit;
         private MazeNode _mazeNodeButton;
+        private Transform spawn;
 
         private void DebugFunction(InputAction.CallbackContext obj)
         {
@@ -70,12 +72,15 @@ namespace MazeGenerator.Scripts
                 }
             }
 
+            var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+            spawn = spawnPos;
+
             GenerateMaze(null, _mazeNodes[0, 0]);
             LoopClearDuplicateWalls();
             GenerateExit();
 
             
-            var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+            
         
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
@@ -184,8 +189,8 @@ namespace MazeGenerator.Scripts
             // yield return new WaitForSeconds(0.05f);
 
             MazeNode nextNode;
-            if (occupied == false) occupied = currNode.SetCoin();
-            if (occupied == false) occupied = currNode.SetSpike();
+            if (occupied == false && currNode.transform != spawn) occupied = currNode.SetCoin();
+            if (occupied == false && currNode.transform != spawn) occupied = currNode.SetSpike();
             do
             {
                 nextNode = GetNextUnvisitedNode(currNode);
