@@ -8,6 +8,7 @@ public class Rope : MonoBehaviour
     public Transform player;
     public LineRenderer rope;
     public LayerMask collMask;
+    public GameOverScreen gameOverScreen;
 
     private float _ropeLength;
     private float _maxRopeLength;
@@ -63,7 +64,12 @@ public class Rope : MonoBehaviour
         
         // Debug.Log(_ropeLength);
         // turn red at 75% of max, bright red at 90%
-        if (_ropeLength > (_maxRopeLength * 0.9))
+        if (_ropeLength > _maxRopeLength)
+        {
+            // TODO: break rope (animation?) - GAME OVER
+            gameOverScreen.Setup();
+        }
+        else if (_ropeLength > (_maxRopeLength * 0.9))
         {
             rope.material = materialSuperStretched;
         }
@@ -71,10 +77,7 @@ public class Rope : MonoBehaviour
         {
             rope.material = materialStretched;
         } 
-        else if (_ropeLength > _maxRopeLength)
-        {
-            // TODO: break rope - GAME OVER
-        }
+
         else
         {
             rope.material = materialBasic;
