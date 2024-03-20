@@ -536,7 +536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &481844126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 1210913814}
   coinCollectSound: {fileID: 8300000, guid: ea606d47ce3680342910cecf0babfd1d, type: 3}
-  GameOverScreen: {fileID: 0}
+  GameOverScreen: {fileID: 481844129}
 --- !u!82 &1473114331
 AudioSource:
   m_ObjectHideFlags: 0
