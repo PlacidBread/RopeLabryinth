@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Rope : MonoBehaviour
@@ -7,6 +8,14 @@ public class Rope : MonoBehaviour
     public Transform player;
     public LineRenderer rope;
     public LayerMask collMask;
+
+    private float _ropeLength;
+    private float _maxRopeLength;
+    
+    [SerializeField] private Material materialBasic;
+    [SerializeField] private Material materialStretched;
+    [SerializeField] private Material materialSuperStretched;
+
     
     // Use private field instead of auto-implemented property
     private List<Vector3> ropePositions = new List<Vector3>();
@@ -30,7 +39,43 @@ public class Rope : MonoBehaviour
     
         DetectCollisionEnter();
         if (ropePositions.Count > 2) DetectCollisionExits();
+        
+        CheckRopeLength();
     }
+
+    private void CheckRopeLength()
+    {
+        if (ropePositions.Count < 2) return;
+        
+        _ropeLength = 0.0f;
+        Vector3 prevPoint = ropePositions[0];
+        foreach (var ropePoint in ropePositions)
+        {
+            _ropeLength += Vector3.Distance(prevPoint, ropePoint);
+            prevPoint = ropePoint;
+        }
+        
+        // Debug.Log(_ropeLength);
+        // turn red at 75% of max, bright red at 90%
+        if (_ropeLength > (_maxRopeLength * 0.9))
+        {
+            rope.material = materialSuperStretched;
+        }
+        else if (_ropeLength > (_maxRopeLength * 0.75))
+        {
+            rope.material = materialStretched;
+        } 
+        else if (_ropeLength > _maxRopeLength)
+        {
+            // TODO: break rope - GAME OVER
+        }
+        else
+        {
+            rope.material = materialBasic;
+        }
+    }
+    
+    
     // Method to log rope positions
     public void LogRopePos()
     {
@@ -48,11 +93,12 @@ public class Rope : MonoBehaviour
         {
             // if (ropePositions.Contains(hit.point)) return;
             if (ContainsSimilar(hit.point)) return;
-            ropePositions.RemoveAt(ropePositions.Count - 1);
+            ropePositions.RemoveAt(ropePositions.Count - 1); // remove player pos temporarily
             AddPosToRope(hit.point);
         }
     }
     
+    // need changing?
     private void DetectCollisionExits()
     {
         RaycastHit hit;
@@ -92,5 +138,10 @@ public class Rope : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void SetMaxRopeLength(float ropeLength)
+    {
+        _maxRopeLength = ropeLength;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using MazeGenerator.Scripts.Enums;
 using StarterAssets;
 using Unity.Mathematics;
@@ -23,6 +24,7 @@ namespace MazeGenerator.Scripts
         [SerializeField] private int mazeHeight;
         [SerializeField] private int mazeNodeScale = 4;
         [SerializeField] private int torchSpawnGap = 3;
+        [SerializeField] private float startingMaxRopeLength = 50.0f;
         private bool occupied;
 
         private int _count = 0;
@@ -77,6 +79,7 @@ namespace MazeGenerator.Scripts
         
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
+            rope.SetMaxRopeLength(startingMaxRopeLength);
             
             SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
