@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Rope : MonoBehaviour
@@ -16,6 +17,7 @@ public class Rope : MonoBehaviour
     [SerializeField] private Material materialBasic;
     [SerializeField] private Material materialStretched;
     [SerializeField] private Material materialSuperStretched;
+    public TextMeshProUGUI deathText;
 
     
     // Use private field instead of auto-implemented property
@@ -67,6 +69,7 @@ public class Rope : MonoBehaviour
         if (_ropeLength > _maxRopeLength)
         {
             // TODO: break rope (animation?) - GAME OVER
+            deathText.text = "ROPE SNAPPED";
             gameOverScreen.Setup();
         }
         else if (_ropeLength > (_maxRopeLength * 0.9))

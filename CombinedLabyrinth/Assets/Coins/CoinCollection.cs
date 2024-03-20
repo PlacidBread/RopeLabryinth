@@ -7,6 +7,7 @@ public class CoinCollection : MonoBehaviour
 {
     private int coinCount;
     public TextMeshProUGUI coinText;
+    public TextMeshProUGUI deathText;
     public AudioClip coinCollectSound;
     private AudioSource audioSource;
     public GameOverScreen GameOverScreen;
@@ -53,7 +54,8 @@ public class CoinCollection : MonoBehaviour
         {
 
             if (coinCount <= 0 && !invincible)
-            {
+            {   
+                deathText.text = "HIT SPIKE";
                 GameOverScreen.Setup();
                 Debug.Log("GAMEOVER");
             }

@@ -9,7 +9,8 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
     public AudioClip gameOverMusic; 
-    private AudioSource audioSource; 
+    private AudioSource audioSource;
+    public TextMeshProUGUI deathText;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class Timer : MonoBehaviour
         {
             audioSource.PlayOneShot(gameOverMusic);
         }
-
+        deathText.text = "TIMER RAN OUT";
         GameOverScreen.Setup();
     }
 }
