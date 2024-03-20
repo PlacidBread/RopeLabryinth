@@ -102,10 +102,25 @@ public class Rope : MonoBehaviour
     private void DetectCollisionExits()
     {
         RaycastHit hit;
-        if (!Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 3), out hit, collMask))
+        // if (!Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 3), out hit, collMask))
+        // {
+        //     ropePositions.RemoveAt(ropePositions.Count - 2);
+        // }
+        if (Vector3.Distance(player.position, rope.GetPosition(ropePositions.Count - 3)) <= 2.5f)
         {
+            Debug.Log("test");
             ropePositions.RemoveAt(ropePositions.Count - 2);
         }
+
+        // for (int i = 1; i < ropePositions.Count - 2; i++)
+        // {
+        //     Debug.Log(Vector3.Distance(player.position, ropePositions[i]));
+        //     if (Vector3.Distance(player.position, ropePositions[i]) <= 2f)
+        //     {
+        //         Debug.Log("test");
+        //         ropePositions.RemoveAt(i);
+        //     }
+        // }
     }
     
     private void AddPosToRope(Vector3 _pos)
