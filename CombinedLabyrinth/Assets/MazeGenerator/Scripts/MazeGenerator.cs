@@ -86,8 +86,6 @@ namespace MazeGenerator.Scripts
             LoopClearDuplicateWalls();
             GenerateExit();
 
-
-            
             
             // rope = player.GetComponent<Rope>();
             // rope.StartRenderRope(spawnPos);

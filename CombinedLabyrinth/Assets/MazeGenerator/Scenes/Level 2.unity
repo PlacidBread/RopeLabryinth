@@ -1867,6 +1867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 1210913814}
+  deathText: {fileID: 0}
   coinCollectSound: {fileID: 8300000, guid: ea606d47ce3680342910cecf0babfd1d, type: 3}
   GameOverScreen: {fileID: 481844129}
   invincibilityTimer: 1
@@ -1978,7 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb62cdf9f7fbf334db206d51c3966624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeGenerator: {fileID: 0}
+  mazeGenerator: {fileID: 92561331}
 --- !u!114 &1473114342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,7 +1992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405830dcfd7bc2b49b5142e62ccb993e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeGenerator: {fileID: 0}
+  mazeGenerator: {fileID: 92561331}
 --- !u!1 &1503448677
 GameObject:
   m_ObjectHideFlags: 0
