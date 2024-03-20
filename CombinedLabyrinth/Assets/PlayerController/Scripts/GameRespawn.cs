@@ -5,13 +5,13 @@ public class GameRespawn : MonoBehaviour
     private Transform spawnPoint { get; set; }
 
     // [SerializeField] private CharacterController characterController; 
-    private MazeGenerator.Scripts.MazeGenerator _mazeGenerator; 
+    // private MazeGenerator.Scripts.MazeGenerator _mazeGenerator; 
 
     [SerializeField] private int PaddingDepth;
     private void Start() 
     { 
         // characterController = GetComponent<CharacterController>(); 
-        _mazeGenerator = GetComponent<MazeGenerator.Scripts.MazeGenerator>();
+        // _mazeGenerator = GetComponent<MazeGenerator.Scripts.MazeGenerator>();
     } 
     //
     // private void Update() 

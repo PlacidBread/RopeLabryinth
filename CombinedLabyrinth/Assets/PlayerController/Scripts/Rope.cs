@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class Rope : MonoBehaviour
     {
         RenderRope = true;
         AddPosToRope(spawnPos.position);
-        AddPosToRope(spawnPos.position);
+        // AddPosToRope(spawnPos.position);
     }
     
     private void Update()
@@ -45,7 +46,8 @@ public class Rope : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 2), out hit, collMask))
         {
-            if (ropePositions.Contains(hit.point)) return;
+            // if (ropePositions.Contains(hit.point)) return;
+            if (ContainsSimilar(hit.point)) return;
             ropePositions.RemoveAt(ropePositions.Count - 1);
             AddPosToRope(hit.point);
         }
@@ -75,5 +77,20 @@ public class Rope : MonoBehaviour
     private void LastSegmentGoToPlayerPos()
     {
         rope.SetPosition(rope.positionCount - 1, player.position);
+    }
+
+    private bool ContainsSimilar(Vector3 newPos)
+    {
+        foreach (var pos in ropePositions)
+        {
+            Vector3 diff = new Vector3(Math.Abs(pos.x - newPos.x), Math.Abs(pos.y - newPos.y),
+                Math.Abs(pos.z - newPos.z));
+            if (diff.x <= 0.5 && diff.y <= 0.5 && diff.z <= 0.5)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
