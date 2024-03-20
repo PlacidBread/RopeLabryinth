@@ -222,15 +222,15 @@ namespace MazeGenerator.Scripts
 
         private void GenerateMaze(MazeNode prevNode, MazeNode currNode)
         {
-            occupied = false;
+            //occupied = false;
             currNode.Visit();
             ClearWalls(prevNode, currNode);
 
             // yield return new WaitForSeconds(0.05f);
 
             MazeNode nextNode;
-            if (occupied == false && currNode.transform != spawn) occupied = currNode.SetCoin();
-            if (occupied == false && currNode.transform != spawn) occupied = currNode.SetSpike();
+            if (currNode.transform != spawn) occupied = currNode.SetCoin();
+            if (currNode.transform != spawn) occupied = currNode.SetSpike();
             do
             {
                 nextNode = GetNextUnvisitedNode(currNode);
