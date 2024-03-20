@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 namespace MazeGenerator.Scripts
 {
-    public class MazeGenerator : MonoBehaviour
+    public class MazeGenerator2 : MonoBehaviour
     {
         [SerializeField] private MazeNode mazeNodePrefab;
         [SerializeField] private MazeNodeExit mazeNodeExitPrefab;
@@ -22,8 +22,8 @@ namespace MazeGenerator.Scripts
         private GameRespawn gameRespawn;
         private Rope rope;
 
-        [SerializeField] private int mazeWidth;
-        [SerializeField] private int mazeHeight;
+        [SerializeField] private int mazeWidth = 10;
+        [SerializeField] private int mazeHeight = 10;
         [SerializeField] private int mazeNodeScale = 4;
         [SerializeField] private int torchSpawnGap = 3;
         [SerializeField] private float startingMaxRopeLength = 50.0f;

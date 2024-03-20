@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 namespace MazeGenerator.Scripts
 {
-    public class MazeGenerator : MonoBehaviour
+    public class MazeGenerator3 : MonoBehaviour
     {
         [SerializeField] private MazeNode mazeNodePrefab;
         [SerializeField] private MazeNodeExit mazeNodeExitPrefab;
