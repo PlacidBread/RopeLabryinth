@@ -1859,7 +1859,7 @@ MonoBehaviour:
   coinText: {fileID: 1210913814}
   coinCollectSound: {fileID: 8300000, guid: ea606d47ce3680342910cecf0babfd1d, type: 3}
   GameOverScreen: {fileID: 481844129}
-  invincibilityTimer: 3
+  invincibilityTimer: 1
 --- !u!82 &1473114331
 AudioSource:
   m_ObjectHideFlags: 0

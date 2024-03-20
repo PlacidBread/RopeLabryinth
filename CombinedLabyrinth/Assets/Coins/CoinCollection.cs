@@ -35,7 +35,7 @@ public class CoinCollection : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Coin"))
+        if (collider.gameObject.CompareTag("Coin") && !invincible)
         {
             coinCount++;
             CoinTracker.setCointCount(coinCount);
