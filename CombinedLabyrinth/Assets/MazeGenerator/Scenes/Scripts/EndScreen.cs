@@ -12,6 +12,10 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         coinText.text = "COINS COLLECTED: " + CoinTracker.getCoinCount();
+        
+        //Enable curson
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void MenuButton()
