@@ -9,6 +9,7 @@ public class CoinCollection : MonoBehaviour
     public TextMeshProUGUI coinText;
     public AudioClip coinCollectSound;
     private AudioSource audioSource;
+    public GameOverScreen GameOverScreen;
 
     private void Start()
     {
@@ -41,6 +42,10 @@ public class CoinCollection : MonoBehaviour
                 Debug.Log("HIT");
 
 
+            } 
+            else
+            {
+                //GameOverScreen.Setup();
             }
         }
     }
