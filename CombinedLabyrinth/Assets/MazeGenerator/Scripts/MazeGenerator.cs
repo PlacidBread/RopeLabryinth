@@ -142,8 +142,6 @@ namespace MazeGenerator.Scripts
             ExitSide exitSide = (ExitSide)Random.Range(0, 4);
             int random;
             Vector2Int index = new Vector2Int();
-            // GameObject endCol;
-            // Vector3 euler;
             int buttonIndex = 0;
             
             switch ((ExitSide)exitSide)

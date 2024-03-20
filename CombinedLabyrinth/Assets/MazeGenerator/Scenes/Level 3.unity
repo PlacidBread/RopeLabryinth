@@ -1548,12 +1548,12 @@ PrefabInstance:
     - target: {fileID: 7032720123470519448, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7032720123470519448, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.07422729
+      value: 0.50014997
       objectReference: {fileID: 0}
     - target: {fileID: 7032720123470519448, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
@@ -1588,7 +1588,7 @@ PrefabInstance:
     - target: {fileID: 7032720123470519448, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.1842451
+      value: 0.12790771
       objectReference: {fileID: 0}
     - target: {fileID: 7032720123470519448, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
