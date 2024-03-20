@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Level 2.unity
     guid: 1b36f0b30925b344b9ddbdfad64973fe
+  - enabled: 1
+    path: Assets/MazeGenerator/Scenes/Next Level/Level3.unity
+    guid: 1199ddb012919ee4fa33620b67b7109a
+  - enabled: 1
+    path: Assets/MazeGenerator/Scenes/Level 3.unity
+    guid: 00c56502af3edd44daae733b2e60d783
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
