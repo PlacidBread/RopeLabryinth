@@ -11,6 +11,7 @@ public class Rope : MonoBehaviour
     public LineRenderer rope;
     public LayerMask collMask;
     public GameOverScreen gameOverScreen;
+    public AudioClip ropeSnapSound;
 
     private float _ropeLength;
     private float _maxRopeLength;
@@ -24,6 +25,7 @@ public class Rope : MonoBehaviour
     // Use private field instead of auto-implemented property
     private List<Vector3> _ropePositions = new List<Vector3>();
     private bool _breakRopeParts;
+    private AudioSource _audioSource;
 
     // Method to start rendering the rope
     public bool RenderRope { get; private set; } = false;
@@ -40,7 +42,12 @@ public class Rope : MonoBehaviour
         RenderRope = false;
         // Additional cleanup or logic if needed
     }
-    
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (_breakRopeParts) BreakRopeParts();
@@ -54,7 +61,7 @@ public class Rope : MonoBehaviour
         
         CheckRopeLength();
     }
-
+    
     private void BreakRopeParts()
     {
         var newParts = new List<Vector3>();
@@ -80,34 +87,39 @@ public class Rope : MonoBehaviour
         }
         
         // Debug.Log(_ropeLength);
-        // turn red at 75% of max, bright red at 90%
+        // turn red at 65% of max, bright red at 85%
         if (_ropeLength > _maxRopeLength)
         {
             // TODO: break rope (animation?) - GAME OVER
 
-            // deathText.text = "ROPE SNAPPED";
+            deathText.text = "ROPE SNAPPED";
 
             _breakRopeParts = true;
+            RenderRope = false;
             rope.material = materialBasic;
-            
-            gameOverScreen.Setup();
+            _audioSource.PlayOneShot(ropeSnapSound);
+
+            StartCoroutine(WaitGameOver());
         }
-        else if (_ropeLength > (_maxRopeLength * 0.9))
+        else if (_ropeLength > (_maxRopeLength * 0.85))
         {
             rope.material = materialSuperStretched;
         }
-        else if (_ropeLength > (_maxRopeLength * 0.75))
+        else if (_ropeLength > (_maxRopeLength * 0.65))
         {
             rope.material = materialStretched;
         } 
-
         else
         {
             rope.material = materialBasic;
         }
     }
-    
-    
+
+    private IEnumerator WaitGameOver()
+    {
+        yield return new WaitForSeconds(1.0f);
+        gameOverScreen.Setup();
+    }
     // Method to log rope positions
     public void LogRopePos()
     {
