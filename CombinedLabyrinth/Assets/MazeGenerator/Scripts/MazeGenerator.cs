@@ -53,6 +53,8 @@ namespace MazeGenerator.Scripts
                 Debug.Log("Error");
                 return;
             }
+
+
         
             // SmoothCameraController.Activate();
             // ThirdPersonController.CanMove = true;
@@ -81,7 +83,6 @@ namespace MazeGenerator.Scripts
 
             
             
-        
             rope = player.GetComponent<Rope>();
             rope.StartRenderRope(spawnPos);
             rope.SetMaxRopeLength(startingMaxRopeLength);
@@ -345,7 +346,7 @@ namespace MazeGenerator.Scripts
         ///     - mazeWidth * 2 and mazeHeight * 2
         public void EndReached()
         {
-            Debug.Log("Level 2 Reached!");
+            Debug.Log("Next Level Reached!");
 
             // Clear the current maze
             ClearMaze();
@@ -354,17 +355,14 @@ namespace MazeGenerator.Scripts
             mazeWidth *= 2;
             mazeHeight *= 2;
 
+            rope.StopRendering();
+
             // Setup a new maze
             SetupMaze();
-            
-            //var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
-            gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
 
-            rope = player.GetComponent<Rope>();
-            rope.StopRendering();
-            //rope.StartRenderRope()
 
         }
+
 
         private void ClearMaze()
         {
