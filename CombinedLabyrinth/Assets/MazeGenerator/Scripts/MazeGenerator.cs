@@ -345,11 +345,25 @@ namespace MazeGenerator.Scripts
         ///     - mazeWidth * 2 and mazeHeight * 2
         public void EndReached()
         {
-            // TODO: End screen?
+            Debug.Log("Level 2 Reached!");
+
+            // Clear the current maze
+            ClearMaze();
+
+            // Increase maze dimensions for the next level
             mazeWidth *= 2;
             mazeHeight *= 2;
-            ClearMaze();
-            // SetupMaze();
+
+            // Setup a new maze
+            SetupMaze();
+            
+            //var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+            gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+
+            rope = player.GetComponent<Rope>();
+            rope.StopRendering();
+            //rope.StartRenderRope()
+
         }
 
         private void ClearMaze()

@@ -29,6 +29,12 @@ public class Rope : MonoBehaviour
         AddPosToRope(spawnPos.position);
         // AddPosToRope(spawnPos.position);
     }
+
+    public void StopRendering()
+    {
+        RenderRope = false;
+        // Additional cleanup or logic if needed
+    }
     
     private void Update()
     {
