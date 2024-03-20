@@ -318,6 +318,8 @@ MonoBehaviour:
     type: 3}
   endColliderPrefab: {fileID: 8610816289571229644, guid: ed51ffa2e2dbfeb48b11d521f291eb93,
     type: 3}
+  ropeBarrelPrefab: {fileID: 603977926397415157, guid: ac4aed5dd904f0f479250f3aaf3801ad,
+    type: 3}
   player: {fileID: 1473114301}
   mazeWidth: 5
   mazeHeight: 5

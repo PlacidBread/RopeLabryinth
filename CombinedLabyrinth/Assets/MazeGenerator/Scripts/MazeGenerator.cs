@@ -20,6 +20,7 @@ namespace MazeGenerator.Scripts
         [SerializeField] private MazeNode mazeNodePrefab;
         [SerializeField] private MazeNodeExit mazeNodeExitPrefab;
         [SerializeField] private GameObject endColliderPrefab;
+        [SerializeField] private GameObject ropeBarrelPrefab;
         [SerializeField] private GameObject player;
         // [SerializeField] private Camera cameraController;
         private GameRespawn gameRespawn;
@@ -39,6 +40,7 @@ namespace MazeGenerator.Scripts
         private GameObject _endCollider;
         private MazeNodeExit _mazeNodeExit;
         private MazeNode _mazeNodeButton;
+        private GameObject _ropeBarrel;
         private Transform spawn;
 
         private void DebugFunction(InputAction.CallbackContext obj)
@@ -81,6 +83,8 @@ namespace MazeGenerator.Scripts
 
             var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
             spawn = spawnPos;
+
+            _ropeBarrel = Instantiate(ropeBarrelPrefab, spawnPos.position, Quaternion.identity);
     
             GenerateMaze(null, _mazeNodes[0, 0]);
             LoopClearDuplicateWalls();
@@ -100,13 +104,14 @@ namespace MazeGenerator.Scripts
             // debugInput.action.Enable();
         }
         
-        private IEnumerator RenderRope(Transform spawnPos) 
+        private IEnumerator RenderRope(Transform spawnTrans) 
         {
             // Debug.Log(spawnPos.position);
             rope = player.GetComponent<Rope>();
             rope.ClearOldRope();
             yield return new WaitForSeconds(0.1f);
-            rope.StartRenderRope(spawnPos);
+            spawnTrans.position = new Vector3(spawnTrans.position.x, spawnTrans.position.y + 0.55f, spawnTrans.position.z);
+            rope.StartRenderRope(spawnTrans);
             rope.SetMaxRopeLength(startingMaxRopeLength);
         }
         

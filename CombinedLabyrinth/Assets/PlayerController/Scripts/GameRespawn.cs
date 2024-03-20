@@ -39,7 +39,7 @@ public class GameRespawn : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         Debug.Log("-" + transform.position);
         playerController.enabled = false;
-        playerController.transform.position = spawnPoint.position;
+        playerController.transform.position = new Vector3(spawnPoint.position.x+0.5f, spawnPoint.position.y, spawnPoint.position.z+0.5f);
         playerController.enabled = true;
     } 
 }
