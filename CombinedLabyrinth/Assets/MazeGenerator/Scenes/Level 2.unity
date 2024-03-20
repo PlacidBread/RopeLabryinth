@@ -1452,6 +1452,11 @@ PrefabInstance:
       propertyPath: analogMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2582887683526539710, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1264076875}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_RootOrder
@@ -1599,6 +1604,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 41d1c06b602bbf048846c6b223a428a6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+--- !u!143 &1264076875 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4416926081852918491, guid: 64dce48905ffd9b4293e595fa6941544,
+    type: 3}
+  m_PrefabInstance: {fileID: 1264076874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298453505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2113,7 @@ MonoBehaviour:
   timerText: {fileID: 941889516}
   remainingTime: 300
   gameOverMusic: {fileID: 8300000, guid: 99945ad2a8ab183479a238d922b93ecb, type: 3}
+  deathText: {fileID: 0}
 --- !u!82 &1503448683
 AudioSource:
   m_ObjectHideFlags: 0

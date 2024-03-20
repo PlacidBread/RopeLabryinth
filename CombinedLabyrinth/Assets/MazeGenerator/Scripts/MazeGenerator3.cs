@@ -91,8 +91,8 @@ namespace MazeGenerator.Scripts
             SmoothCameraController.Activate();
             ThirdPersonController.CanMove = true;
         
-            debugInput.action.performed += DebugFunction;
-            debugInput.action.Enable();
+            // debugInput.action.performed += DebugFunction;
+            // debugInput.action.Enable();
         }
         
 

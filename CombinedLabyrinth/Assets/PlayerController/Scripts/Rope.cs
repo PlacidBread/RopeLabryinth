@@ -90,7 +90,7 @@ public class Rope : MonoBehaviour
         {
             // TODO: break rope (animation?) - GAME OVER
 
-            deathText.text = "ROPE SNAPPED";
+            // deathText.text = "ROPE SNAPPED";
 
             _breakRopeParts = true;
             rope.material = materialBasic;

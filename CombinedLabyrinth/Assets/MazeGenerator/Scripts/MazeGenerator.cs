@@ -89,9 +89,9 @@ namespace MazeGenerator.Scripts
 
             
             
-            rope = player.GetComponent<Rope>();
-            rope.StartRenderRope(spawnPos);
-            rope.SetMaxRopeLength(startingMaxRopeLength);
+            // rope = player.GetComponent<Rope>();
+            // rope.StartRenderRope(spawnPos);
+            // rope.SetMaxRopeLength(startingMaxRopeLength);
             
             StartCoroutine(RenderRope(spawnPos));
             
