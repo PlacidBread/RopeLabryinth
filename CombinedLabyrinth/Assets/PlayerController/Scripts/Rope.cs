@@ -140,7 +140,7 @@ public class Rope : MonoBehaviour
     private void DetectCollisionExits()
     {
         RaycastHit hit;
-        if (Vector3.Distance(player.position, rope.GetPosition(_ropePositions.Count - 3)) <= 2.5f)
+        if (Vector3.Distance(player.position, rope.GetPosition(_ropePositions.Count - 3)) <= 2f)
         {
             _ropePositions.RemoveAt(_ropePositions.Count - 2);
         }
