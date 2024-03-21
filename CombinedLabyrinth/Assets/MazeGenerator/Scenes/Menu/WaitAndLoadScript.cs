@@ -34,6 +34,7 @@ public class WaitAndLoadScript : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             Debug.Log("LOADED");
             sceneLoader.allowSceneActivation = true;
+            Cursor.visible = false;
         }
     }
 }
