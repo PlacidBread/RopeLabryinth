@@ -24,14 +24,14 @@ public class GameRespawn : MonoBehaviour
     //         Respawn(); 
     //     } 
     // } 
-    public Transform SetSpawn(MazeNode[,] mazeNodes, int mazeWidth, int mazeHeight)
+    public (Transform, int, int) SetSpawn(MazeNode[,] mazeNodes, int mazeWidth, int mazeHeight)
     {
         int x = Random.Range(0 + PaddingDepth, (mazeWidth-1) - PaddingDepth);
         int y = Random.Range(0 + PaddingDepth, (mazeHeight-1) - PaddingDepth);
         spawnPoint = mazeNodes[x, y].transform;
         
         StartCoroutine(Respawn());
-        return spawnPoint;
+        return (spawnPoint, x, y);
     }
     
     private IEnumerator Respawn()

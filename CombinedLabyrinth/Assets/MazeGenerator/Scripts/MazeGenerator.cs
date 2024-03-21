@@ -90,9 +90,11 @@ namespace MazeGenerator.Scripts
                 }
             }
 
-            var spawnPos = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
+            var (spawnPos, x, y) = gameRespawn.SetSpawn(_mazeNodes, mazeWidth, mazeHeight);
             spawn = spawnPos;
-
+            _mazeNodes[x, y].SetCoin(false);
+            _mazeNodes[x, y].SetSpike(false);
+            
             _ropeBarrel = Instantiate(ropeBarrelPrefab, spawnPos.position, Quaternion.identity);
     
             GenerateMaze(null, _mazeNodes[0, 0]);
@@ -229,8 +231,10 @@ namespace MazeGenerator.Scripts
             // yield return new WaitForSeconds(0.05f);
 
             MazeNode nextNode;
-            if (currNode.transform != spawn) occupied = currNode.SetCoin();
-            if (currNode.transform != spawn) occupied = currNode.SetSpike();
+            
+            if (currNode.transform != spawn) occupied = currNode.RandomSetCoin();
+            if (currNode.transform != spawn) occupied = currNode.RandomSetSpike();
+
             do
             {
                 nextNode = GetNextUnvisitedNode(currNode);

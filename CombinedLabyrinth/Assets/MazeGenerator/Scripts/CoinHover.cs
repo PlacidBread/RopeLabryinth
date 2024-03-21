@@ -9,15 +9,16 @@ namespace MazeGenerator.Scripts
         [SerializeField] private float bounds = 0.5f;
         [SerializeField] private float jump = -0.008f;
 
-        private float count;
+        private float _count;
         // Update is called once per frame
         void FixedUpdate()
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + jump + Random.Range(0,10)/10000f, transform.position.z);
-            count += jump;
-            if (Mathf.Abs(count) >= bounds)
+            // add y offset with random float
+            transform.position = new Vector3(transform.position.x, transform.position.y + jump+ Random.Range(0,10)/50000f, transform.position.z);
+            _count += jump;
+            if (Mathf.Abs(_count) >= bounds)
             {
-                count = 0;
+                _count = 0;
                 jump *= -1;
             }
         }
