@@ -16,10 +16,11 @@ public class GameOverScreen : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
 
-        //Enable curson
+        //Enable cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        //Display coins
         coinText.text = "COINS COLLECTED: " + CoinTracker.getCoinCount();
         CoinTracker.setCointCount(0);
     }
