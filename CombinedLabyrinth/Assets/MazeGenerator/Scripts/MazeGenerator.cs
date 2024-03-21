@@ -1,17 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using MazeGenerator.Scripts.Enums;
-using Mono.Cecil.Cil;
 using StarterAssets;
 using Unity.Mathematics;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 namespace MazeGenerator.Scripts
 {
