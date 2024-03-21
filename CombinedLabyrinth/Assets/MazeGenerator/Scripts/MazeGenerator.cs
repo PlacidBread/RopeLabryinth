@@ -70,9 +70,6 @@ namespace MazeGenerator.Scripts
             }
             
             rope = player.GetComponent<Rope>();
-        
-            // SmoothCameraController.Activate();
-            // ThirdPersonController.CanMove = true;
             SetupMaze();
         }
 
@@ -100,11 +97,6 @@ namespace MazeGenerator.Scripts
             GenerateMaze(null, _mazeNodes[0, 0]);
             LoopClearDuplicateWalls();
             GenerateExit();
-
-            
-            // rope = player.GetComponent<Rope>();
-            // rope.StartRenderRope(spawnPos);
-            // rope.SetMaxRopeLength(startingMaxRopeLength);
             
             StartCoroutine(RenderRope(spawnPos));
             
@@ -158,15 +150,11 @@ namespace MazeGenerator.Scripts
                         buttonIndex++;
                     }
                     _mazeNodeButton = _mazeNodes[buttonIndex, index.y];
-                    // _mazeNodes[random, mazeHeight-1].ClearFrontWall();
-                    // _mazeNodes[random, mazeHeight-1].ClearAll();
                     break;
                 case ExitSide.Right:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(mazeWidth-1, random);
                     _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x + 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
-                    // euler = endCol.transform.eulerAngles;
-                    // endCol.transform.rotation = quaternion.Euler(euler.x, euler.y + 90, euler.z);
                     _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
                     buttonIndex = mazeHeight - 1 - random;
                     if (buttonIndex == random)
@@ -174,8 +162,6 @@ namespace MazeGenerator.Scripts
                         buttonIndex++;
                     }
                     _mazeNodeButton = _mazeNodes[index.x, buttonIndex];
-                    // _mazeNodes[mazeWidth-1, random].ClearRightWall();ds
-                    // _mazeNodes[mazeWidth-1, random].ClearAll();
                     break;
                 case ExitSide.Bottom:
                     random = Random.Range(1, mazeWidth-1);
@@ -188,15 +174,11 @@ namespace MazeGenerator.Scripts
                         buttonIndex++;
                     }
                     _mazeNodeButton = _mazeNodes[buttonIndex, index.y];
-                    // _mazeNodes[random, 0].ClearBackWall();
-                    // _mazeNodes[random, 0].ClearAll();
                     break;
                 case ExitSide.Left:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(0, random);
                     _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x - 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
-                    // euler = endCol.transform.eulerAngles;
-                    // endCol.transform.rotation = quaternion.Euler(euler.x, euler.y+90, euler.z);
                     _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
                     buttonIndex = mazeHeight - 1 - random;
                     if (buttonIndex == random)
@@ -205,8 +187,6 @@ namespace MazeGenerator.Scripts
                     }
                     _mazeNodeButton = _mazeNodes[index.x, buttonIndex];
                     
-                    // _mazeNodes[0, random].ClearLeftWall();
-                    // _mazeNodes[0, random].ClearAll();
                     break;
                 default:
                     _mazeNodeButton = _mazeNodes[0, 0];
@@ -227,8 +207,7 @@ namespace MazeGenerator.Scripts
             //occupied = false;
             currNode.Visit();
             ClearWalls(prevNode, currNode);
-
-            // yield return new WaitForSeconds(0.05f);
+            
 
             MazeNode nextNode;
             
@@ -263,9 +242,6 @@ namespace MazeGenerator.Scripts
         // check surrounding cells
         private IEnumerable<MazeNode> GetUnvisitedNodes(MazeNode currNode)
         {
-            // int x = (int)currNode.transform.position.x;
-            // int z = (int)currNode.transform.position.z;
-
             int x = (int)currNode.Index.x;
             int z = (int)currNode.Index.y;
         
@@ -407,13 +383,6 @@ namespace MazeGenerator.Scripts
 
         private void ClearMaze()
         {
-            // for (int i = mazeWidth - 1; i >= 0; i--)
-            // {
-            //     for (int j = mazeHeight - 1; j >= 0; j--)
-            //     {
-            //         Destroy(_mazeNodes[i, j]);
-            //    }
-            // }
             foreach (var mazeNode in _mazeNodes)
             {
                 Destroy(mazeNode.gameObject);

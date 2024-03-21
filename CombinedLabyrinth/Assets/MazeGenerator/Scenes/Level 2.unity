@@ -2051,6 +2051,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b8dc800af495d4946821a16d9f7843ea, type: 2}
     - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
+      propertyPath: ropeSnapSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 92f633ae73374d64bb4e4047c2844b1e, type: 3}
+    - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 2079419781}

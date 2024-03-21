@@ -34,7 +34,6 @@ public class Rope : MonoBehaviour
     {
         RenderRope = true;
         AddPosToRope(spawnPos.position);
-        // AddPosToRope(spawnPos.position);
     }
 
     public void StopRendering()
@@ -90,8 +89,6 @@ public class Rope : MonoBehaviour
         // turn red at 65% of max, bright red at 85%
         if (_ropeLength > _maxRopeLength)
         {
-            // TODO: break rope (animation?) - GAME OVER
-
             deathText.text = "ROPE SNAPPED";
 
             _breakRopeParts = true;
@@ -135,24 +132,17 @@ public class Rope : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(player.position, rope.GetPosition(_ropePositions.Count - 2), out hit, collMask))
         {
-            // if (ropePositions.Contains(hit.point)) return;
             if (ContainsSimilar(hit.point)) return;
             _ropePositions.RemoveAt(_ropePositions.Count - 1); // remove player pos temporarily
             AddPosToRope(hit.point);
         }
     }
     
-    // need changing?
     private void DetectCollisionExits()
     {
         RaycastHit hit;
-        // if (!Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 3), out hit, collMask))
-        // {
-        //     ropePositions.RemoveAt(ropePositions.Count - 2);
-        // }
         if (Vector3.Distance(player.position, rope.GetPosition(_ropePositions.Count - 3)) <= 2.5f)
         {
-            // Debug.Log("test");
             _ropePositions.RemoveAt(_ropePositions.Count - 2);
         }
     }
