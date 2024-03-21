@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2405675232694319142}
+  - component: {fileID: 8019865960199598279}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -32,6 +33,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &8019865960199598279
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5409147028673603387}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6fd4d13cbb23e844c817511b2f5a5579, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 6fd4d13cbb23e844c817511b2f5a5579, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 1
+  m_CullingType: 0
 --- !u!1001 &172759545901769971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 170778802311746723, guid: 71c4362bd7469314995bd2758b7406f2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62467885
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71c4362bd7469314995bd2758b7406f2,
         type: 3}
