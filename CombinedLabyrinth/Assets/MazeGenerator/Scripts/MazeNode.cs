@@ -25,7 +25,7 @@ public class MazeNode : MonoBehaviour
     
     public bool IsVisited { get; private set; }
     [SerializeField] public Vector2Int Index;
-    private int chanceOfCoinSpawning = 50;
+    private int chanceOfCoinSpawning = 30;
     private int chanceOfSpikeSpawning = 40;
 
     public void ButtonPressed()
