@@ -324,7 +324,7 @@ MonoBehaviour:
   mazeWidth: 12
   mazeHeight: 12
   mazeNodeScale: 4
-  torchSpawnGap: 4
+  torchSpawnGap: 3
   startingMaxRopeLength: 140
   debugInput: {fileID: 3500834210469696977, guid: 4419d82f33d36e848b3ed5af4c8da37e,
     type: 3}

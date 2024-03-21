@@ -13,7 +13,7 @@ namespace MazeGenerator.Scripts
         void FixedUpdate()
         {
             // add y offset with random float
-            transform.position = new Vector3(transform.position.x, transform.position.y + jump+ Random.Range(0,10)/50000f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + jump, transform.position.z);
             _count += jump;
             if (Mathf.Abs(_count) >= bounds)
             {
