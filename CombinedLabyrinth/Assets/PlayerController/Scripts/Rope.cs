@@ -145,7 +145,7 @@ public class Rope : MonoBehaviour
     // need changing?
     private void DetectCollisionExits()
     {
-        RaycastHit hit;
+        //RaycastHit hit;
         // if (!Physics.Linecast(player.position, rope.GetPosition(ropePositions.Count - 3), out hit, collMask))
         // {
         //     ropePositions.RemoveAt(ropePositions.Count - 2);
