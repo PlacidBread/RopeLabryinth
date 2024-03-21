@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71c4362bd7469314995bd2758b7406f2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spike
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c4362bd7469314995bd2758b7406f2, type: 3}
 --- !u!4 &427695288173789976 stripped
@@ -123,19 +128,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 172759545901769971}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3122772852487378520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055155360023009698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.208321, y: 1.79, z: 2.208321}
-  m_Center: {x: 0, y: 0.65, z: 0}
 --- !u!54 &2296320383914787368
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,3 +144,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3122772852487378520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055155360023009698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.208321, y: 1.79, z: 2.208321}
+  m_Center: {x: 0, y: 0.65, z: 0}

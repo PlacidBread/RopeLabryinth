@@ -132,6 +132,7 @@ public class Rope : MonoBehaviour
         if (Physics.Linecast(player.position, rope.GetPosition(_ropePositions.Count - 2), out hit, collMask))
         {
             if (ContainsSimilar(hit.point)) return;
+            if (hit.collider.CompareTag("Spike") || hit.collider.CompareTag("Coin")) return;
             _ropePositions.RemoveAt(_ropePositions.Count - 1); // remove player pos temporarily
             AddPosToRope(hit.point);
         }
