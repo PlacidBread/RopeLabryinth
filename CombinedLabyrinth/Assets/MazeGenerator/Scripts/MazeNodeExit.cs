@@ -1,4 +1,3 @@
-using System;
 using MazeGenerator.Scripts.Enums;
 //using UnityEditor.UIElements;
 using UnityEngine;
