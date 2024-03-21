@@ -37,11 +37,6 @@ public class Timer : MonoBehaviour
 
     void TimerEnd()
     {
-        
-        if (gameOverMusic != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(gameOverMusic);
-        }
         deathText.text = "TIMER RAN OUT";
         GameOverScreen.Setup();
     }

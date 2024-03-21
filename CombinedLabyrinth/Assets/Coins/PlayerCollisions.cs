@@ -9,7 +9,7 @@ public class PlayerCollisions : MonoBehaviour
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI deathText;
     public AudioClip coinCollectSound;
-    public AudioClip spikeCollisionSound; // Add this field for spike collision sound
+    public AudioClip spikeCollisionSound;
     private AudioSource audioSource;
     public GameOverScreen GameOverScreen;
     [SerializeField] float invincibilityTimer;
@@ -55,10 +55,11 @@ public class PlayerCollisions : MonoBehaviour
         if (collider.gameObject.CompareTag("Spike"))
         {
             if (coinCount <= 0 && !invincible)
-            {   
+            {
                 deathText.text = "HIT SPIKE";
                 GameOverScreen.Setup();
                 Debug.Log("GAMEOVER");
+                
             }
 
             if (coinCount > 0)
@@ -69,7 +70,6 @@ public class PlayerCollisions : MonoBehaviour
                 Debug.Log("HIT");
             }
 
-            // Play the spike collision sound
             if (spikeCollisionSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(spikeCollisionSound);
