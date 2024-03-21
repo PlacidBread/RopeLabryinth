@@ -66,7 +66,7 @@ public class MazeNode : MonoBehaviour
         if (activeWalls[random] == backWall) torchBW.SetActive(true);
     }
 
-    public bool SetCoin()
+    public bool RandomSetCoin()
     {
         int random = Random.Range(1, 100);
         if (random <= chanceOfCoinSpawning)
@@ -77,7 +77,7 @@ public class MazeNode : MonoBehaviour
         return false;
     }
 
-    public bool SetSpike()
+    public bool RandomSetSpike()
     {
         int random = Random.Range(1, 100);
         if (random <= chanceOfSpikeSpawning)
@@ -134,5 +134,15 @@ public class MazeNode : MonoBehaviour
     public bool GetActiveBW()
     {
         return backWall.activeSelf;
+    }
+
+    public void SetCoin(bool val)
+    {
+        coin.SetActive(val);
+    }
+
+    public void SetSpike(bool val)
+    {
+        spike.SetActive(val);
     }
 }
