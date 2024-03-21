@@ -9,13 +9,31 @@ public class WaitAndLoadScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(WaitAndLoadNextScene());
+        // WaitAndLoadNextScene();
     }
 
     IEnumerator WaitAndLoadNextScene()
     {
-        Debug.Log("Waiting for 5 seconds...");
-        yield return new WaitForSeconds(5f);
-        Debug.Log("5 seconds have passed! Loading next scene...");
-        SceneManager.LoadScene(nextSceneName);
+        yield return null;
+        
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        AsyncOperation sceneLoader = SceneManager.LoadSceneAsync(currentSceneIndex+1);
+        if (sceneLoader is null)
+        {
+            Debug.Log("NO NEXT SCENE");
+            yield return null;
+        }
+        else
+        {
+            sceneLoader.allowSceneActivation = false;
+        
+            while (sceneLoader.progress < 0.9f) {
+                yield return null;
+            }
+        
+            yield return new WaitForSeconds(0.75f);
+            Debug.Log("LOADED");
+            sceneLoader.allowSceneActivation = true;
+        }
     }
 }
