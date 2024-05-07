@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using MazeGenerator.Scripts.Enums;
 using StarterAssets;
 using Unity.Mathematics;
@@ -134,13 +135,15 @@ namespace MazeGenerator.Scripts
             int random;
             Vector2Int index = new Vector2Int();
             int buttonIndex = 0;
+            int exitOffset = 3;
             
             switch ((ExitSide)exitSide)
             {
                 case ExitSide.Top:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, mazeHeight-1);
-                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y + 1) * mazeNodeScale), quaternion.identity);
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y + exitOffset) * mazeNodeScale), quaternion.identity);
+                    _endCollider.transform.eulerAngles = new Vector3(0, -180, 0);
                     buttonIndex = mazeWidth - 1 - random;
                     if (buttonIndex == random)
                     {
@@ -151,8 +154,8 @@ namespace MazeGenerator.Scripts
                 case ExitSide.Right:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(mazeWidth-1, random);
-                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x + 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
-                    _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x + exitOffset) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+                    _endCollider.transform.eulerAngles = new Vector3(0, -90, 0);
                     buttonIndex = mazeHeight - 1 - random;
                     if (buttonIndex == random)
                     {
@@ -163,7 +166,7 @@ namespace MazeGenerator.Scripts
                 case ExitSide.Bottom:
                     random = Random.Range(1, mazeWidth-1);
                     index = new Vector2Int(random, 0);
-                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y - 1) * mazeNodeScale), quaternion.identity);
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3(index.x * mazeNodeScale, 0, (index.y - exitOffset) * mazeNodeScale), quaternion.identity);
                     
                     buttonIndex = mazeWidth - 1 - random;
                     if (buttonIndex == random)
@@ -175,7 +178,7 @@ namespace MazeGenerator.Scripts
                 case ExitSide.Left:
                     random = Random.Range(1, mazeHeight-1);
                     index = new Vector2Int(0, random);
-                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x - 1) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
+                    _endCollider = Instantiate(endColliderPrefab, new Vector3((index.x - exitOffset) * mazeNodeScale, 0, index.y * mazeNodeScale), quaternion.identity);
                     _endCollider.transform.eulerAngles = new Vector3(0, 90, 0);
                     buttonIndex = mazeHeight - 1 - random;
                     if (buttonIndex == random)
