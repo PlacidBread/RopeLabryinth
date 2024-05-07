@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 2, z: 0.8}
-  m_Center: {x: 0, y: 0.0000000037252916, z: 0.0000000018626443}
+  m_Size: {x: 1.05, y: 2, z: 0.8}
+  m_Center: {x: 0, y: -0.25, z: 0.0000000018626443}
 --- !u!114 &39305022439419339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20621409548cbb64c8e63318440af773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torchLightParicles: {fileID: 1494882275738498474}
+  torchLightParticles: {fileID: 1494882275738498474}
+  flames: {fileID: 8235300373952102398}
+  secondaryFlames: {fileID: 5674544494713785757}
+  lights: {fileID: 583302610178578871}
 --- !u!1 &3454590589390523037
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +273,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1781949194303238864, guid: e92a0207ed6f749459a3646c2aaf3cd9,
         type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781949194303238864, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781949194303238864, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781949194303238864, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
       propertyPath: InitialModule.startSize.minMaxState
       value: 0
       objectReference: {fileID: 0}
@@ -393,8 +411,29 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 9101080872212838530, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101080872212838530, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101080872212838530, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92a0207ed6f749459a3646c2aaf3cd9, type: 3}
+--- !u!198 &583302610178578871 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 296230944595500747, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 865855355246561148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1494882275738498474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1781949194303238870, guid: e92a0207ed6f749459a3646c2aaf3cd9,
@@ -404,6 +443,18 @@ GameObject:
 --- !u!4 &1494882275738498477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1781949194303238865, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 865855355246561148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5674544494713785757 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4811017566070180577, guid: e92a0207ed6f749459a3646c2aaf3cd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 865855355246561148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8235300373952102398 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9101080872212838530, guid: e92a0207ed6f749459a3646c2aaf3cd9,
     type: 3}
   m_PrefabInstance: {fileID: 865855355246561148}
   m_PrefabAsset: {fileID: 0}
