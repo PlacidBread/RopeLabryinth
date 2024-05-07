@@ -1,2 +1,2 @@
 # RopeLabryinth
-A labyrinth game controlling a rope for a student project
+A labrynth game controlling a rope for a student project
