@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - Spike
   - Button
+  - Torch
   layers:
   - Default
   - TransparentFX
