@@ -21,6 +21,8 @@ public class GameOverScreen : MonoBehaviour
         //Display coins
         coinText.text = "COINS COLLECTED: " + CoinTracker.getCoinCount();
         CoinTracker.setCointCount(0);
+
+        WaitAndLoadScript.SceneIndex = 1;
     }
 
     public void MenuButton()
@@ -38,6 +40,7 @@ public class GameOverScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         // Reset the player here
-        SceneManager.LoadScene("GeneratorScene");
+        var sceneName = WaitAndLoadScript.MakeSceneName();
+        SceneManager.LoadScene(sceneName);
     }
 }

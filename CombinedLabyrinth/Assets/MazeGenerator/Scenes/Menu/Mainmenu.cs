@@ -18,6 +18,11 @@ namespace MazeGenerator.Scenes.Menu
                 loading.SetActive(true);
                 texting.SetActive(false);
             }
+            else
+            {
+                menu.SetActive(true);
+                loading.SetActive(false);
+            }
         }
         
         //

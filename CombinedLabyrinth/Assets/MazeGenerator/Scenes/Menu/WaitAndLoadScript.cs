@@ -51,7 +51,7 @@ public class WaitAndLoadScript : MonoBehaviour
         }
     }
 
-    private string MakeSceneName()
+    public static string MakeSceneName()
     {
         var newSceneName = ChosenLevel.ToString() + SceneIndex.ToString();
         SceneIndex++;
