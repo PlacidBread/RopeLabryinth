@@ -325,7 +325,7 @@ MonoBehaviour:
   mazeHeight: 5
   mazeNodeScale: 4
   torchSpawnGap: 3
-  startingMaxRopeLength: 45
+  startingMaxRopeLength: 48
   debugInput: {fileID: 3500834210469696977, guid: 4419d82f33d36e848b3ed5af4c8da37e,
     type: 3}
 --- !u!4 &92561330
@@ -4608,6 +4608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5885216827943657505, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+    - {fileID: 6703307489399217462, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!1 &1298453505
 GameObject:
@@ -5823,5 +5824,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
