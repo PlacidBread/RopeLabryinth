@@ -2827,12 +2827,12 @@ PrefabInstance:
     - target: {fileID: 583302610178578871, guid: 0457d5c6b547c9343a15f31e644dbee8,
         type: 3}
       propertyPath: LightsModule.rangeCurve.scalar
-      value: 0.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 583302610178578871, guid: 0457d5c6b547c9343a15f31e644dbee8,
         type: 3}
       propertyPath: LightsModule.intensityCurve.scalar
-      value: 0.08
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1494882275738498474, guid: 0457d5c6b547c9343a15f31e644dbee8,
         type: 3}

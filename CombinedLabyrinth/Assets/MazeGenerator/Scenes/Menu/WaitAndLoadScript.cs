@@ -11,11 +11,10 @@ public class WaitAndLoadScript : MonoBehaviour
         Water
     }
         
-    public static Level ChosenLevel;
-    // public void PlayGame () {       
-    
-    public string nextSceneName;
-    
+    public static Level ChosenLevel = Level.Normal;
+    // public string nextSceneName;
+
+    private int _sceneIndex = 1;
     void Start()
     {
         StartCoroutine(WaitAndLoadNextScene());
@@ -25,9 +24,13 @@ public class WaitAndLoadScript : MonoBehaviour
     IEnumerator WaitAndLoadNextScene()
     {
         yield return null;
+
+        var nextSceneName = MakeSceneName();
+        Debug.Log(MakeSceneName());
         
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        AsyncOperation sceneLoader = SceneManager.LoadSceneAsync(currentSceneIndex+1);
+        // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // AsyncOperation sceneLoader = SceneManager.LoadSceneAsync(currentSceneIndex+1);
+        AsyncOperation sceneLoader = SceneManager.LoadSceneAsync(nextSceneName);
         if (sceneLoader is null)
         {
             Debug.Log("NO NEXT SCENE");
@@ -46,5 +49,12 @@ public class WaitAndLoadScript : MonoBehaviour
             sceneLoader.allowSceneActivation = true;
             Cursor.visible = false;
         }
+    }
+
+    private string MakeSceneName()
+    {
+        var newSceneName = ChosenLevel.ToString() + _sceneIndex.ToString();
+        _sceneIndex++;
+        return newSceneName;
     }
 }
