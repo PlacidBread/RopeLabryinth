@@ -14,7 +14,7 @@ public class WaitAndLoadScript : MonoBehaviour
     public static Level ChosenLevel = Level.Normal;
     // public string nextSceneName;
 
-    private int _sceneIndex = 1;
+    public static int SceneIndex = 1;
     void Start()
     {
         StartCoroutine(WaitAndLoadNextScene());
@@ -53,8 +53,8 @@ public class WaitAndLoadScript : MonoBehaviour
 
     private string MakeSceneName()
     {
-        var newSceneName = ChosenLevel.ToString() + _sceneIndex.ToString();
-        _sceneIndex++;
+        var newSceneName = ChosenLevel.ToString() + SceneIndex.ToString();
+        SceneIndex++;
         return newSceneName;
     }
 }

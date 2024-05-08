@@ -374,16 +374,23 @@ namespace MazeGenerator.Scripts
             private void LoadNextLevel()
             {
                 // Get the current scene build index
-                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-                // Load the next scene by incrementing the current scene index
-                levelIndex++;
-                if (levelIndex > 3)
+                // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                //
+                // // Load the next scene by incrementing the current scene index
+                // levelIndex++;
+                // Debug.Log("level " + levelIndex);
+                // if (levelIndex > 3)
+                // {
+                //     SceneManager.LoadScene("EndScreen");
+                //     return;
+                // }
+                // SceneManager.LoadScene(currentSceneIndex + 1);
+                // WaitAndLoadScript.SceneIndex++;
+                if (WaitAndLoadScript.SceneIndex > 2)
                 {
                     SceneManager.LoadScene("EndScreen");
-                    return;
                 }
-                SceneManager.LoadScene(currentSceneIndex + 1);
+                SceneManager.LoadScene("Menu");
             }
 
 
