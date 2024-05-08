@@ -1295,7 +1295,7 @@ MonoBehaviour:
   rope: {fileID: 7032720123470519448}
   collMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   gameOverScreen: {fileID: 0}
   ropeSnapSound: {fileID: 0}
   materialBasic: {fileID: 0}

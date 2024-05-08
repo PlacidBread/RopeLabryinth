@@ -2063,7 +2063,7 @@ PrefabInstance:
     - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: collMask.m_Bits
-      value: 1
+      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 8981957919428530889, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
