@@ -4,8 +4,18 @@ using System.Collections;
 
 public class WaitAndLoadScript : MonoBehaviour
 {
+    public enum Level
+    {
+        Normal,
+        Ghost,
+        Water
+    }
+        
+    public static Level ChosenLevel;
+    // public void PlayGame () {       
+    
     public string nextSceneName;
-
+    
     void Start()
     {
         StartCoroutine(WaitAndLoadNextScene());
