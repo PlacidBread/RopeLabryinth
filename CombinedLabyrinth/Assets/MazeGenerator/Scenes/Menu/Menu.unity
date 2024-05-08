@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2028,11 +2028,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Right, its a maze, u have rope that extends as u move around from a barrel
-    dont move too far though as rope will broke at certain lengths, avoid the spike
-    traps, collect coins to score high and find the red button to than also find
-    the door and escape to the next lelvel there three levels in total. WIWLL U MAKE
-    IT TO THE END?
+  m_text: Right, its a maze. A rope extends from a barrel as you move around. Don't
+    move too far though as the rope will break if over-extended. Avoid the spike
+    traps, collect coins to score high and find the red button to open the door and
+    escape to the next level. There are three levels in total. WLL U MAKE IT TO THE
+    END?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8377c80aaff338345a6803bca1ebb72a, type: 2}
   m_sharedMaterial: {fileID: 4636359683719816597, guid: 8377c80aaff338345a6803bca1ebb72a,
@@ -2538,18 +2538,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There are three different variants.
+  m_text: 'There are three different variants:
 
 
-    Normal being dark and can light
-    ur way out.
+    Normal - being dark and can
+    light ur way out.
 
 
-    Water as water rises u slow down.
+    Water - will slow you down as it rises
 
 
-    Ghost u have ghost
-    roaming that will take ur coins and slowly kill u'
+    Ghost -
+    A ghost will try to steal your coins, eventually you might join him...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8377c80aaff338345a6803bca1ebb72a, type: 2}
   m_sharedMaterial: {fileID: 4636359683719816597, guid: 8377c80aaff338345a6803bca1ebb72a,
@@ -3386,9 +3386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75562e8489a0a1e42ae959377de0b075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 1907825153}
-  button2: {fileID: 2136714057}
-  button3: {fileID: 424840872}
 --- !u!1 &1760016363
 GameObject:
   m_ObjectHideFlags: 0

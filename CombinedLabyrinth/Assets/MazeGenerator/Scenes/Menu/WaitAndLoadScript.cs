@@ -26,7 +26,7 @@ public class WaitAndLoadScript : MonoBehaviour
         yield return null;
 
         var nextSceneName = MakeSceneName();
-        Debug.Log(MakeSceneName());
+        Debug.Log(nextSceneName);
         
         // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         // AsyncOperation sceneLoader = SceneManager.LoadSceneAsync(currentSceneIndex+1);

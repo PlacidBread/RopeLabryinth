@@ -131,7 +131,7 @@ public class Rope : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(player.position, rope.GetPosition(_ropePositions.Count - 2), out hit, collMask))
         {
-            Debug.Log(hit);
+            // Debug.Log(hit);
             if (ContainsSimilar(hit.point)) return;
             if (hit.collider.CompareTag("Spike") || hit.collider.CompareTag("Coin") || hit.collider.CompareTag("Torch") || hit.collider.CompareTag("Player")) return;
             // if (hit.collider.CompareTag("Spike") || hit.collider.CompareTag("Coin")) return;
