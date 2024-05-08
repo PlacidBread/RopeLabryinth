@@ -41,7 +41,7 @@ namespace MazeGenerator.Scripts
         private GameObject _ropeBarrel;
         private float _ropeLength;
         private Transform spawn;
-
+        private static int levelIndex = 1;
         private void DebugFunction(InputAction.CallbackContext obj)
         {
             if (!rope.RenderRope) return;
@@ -377,6 +377,12 @@ namespace MazeGenerator.Scripts
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
                 // Load the next scene by incrementing the current scene index
+                levelIndex++;
+                if (levelIndex > 3)
+                {
+                    SceneManager.LoadScene("EndScreen");
+                    return;
+                }
                 SceneManager.LoadScene(currentSceneIndex + 1);
             }
 

@@ -32,27 +32,39 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Normal3.unity
     guid: 78de60c3ff884f146829c99cd4bdd08f
-  - enabled: 0
-    path: Assets/MazeGenerator/Scenes/EndScreen.unity
-    guid: b377390817171cc4982691e19ebb65a2
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Ghost1.unity
     guid: 9bf65afbf92addd49839a3b77640dfb0
   - enabled: 1
-    path: Assets/MazeGenerator/Scenes/Ghost2.unity
-    guid: 50d4b7ed0ec2a9c4f896fadab9593474
-  - enabled: 1
     path: Assets/MazeGenerator/Scenes/Ghost3.unity
+    guid: b5e913c607ba52c40a22e96dc0c6ae55
+  - enabled: 1
+    path: Assets/MazeGenerator/Scenes/Ghost2.unity
+    guid: 8dd01bed90f875a44aa6e1b08ed3c915
+  - enabled: 0
+    path: Assets/MazeGenerator/Scenes/Ghost2OLD.unity
+    guid: 50d4b7ed0ec2a9c4f896fadab9593474
+  - enabled: 0
+    path: Assets/MazeGenerator/Scenes/Ghost3OLD.unity
     guid: f115dff371a91b945892479991c6f206
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Water1.unity
     guid: 11a3201271d71d040a7062b6faec88d1
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Water2.unity
-    guid: ef13d82c025fdd04c9938bb1b1821249
+    guid: 8109ebf70739eb242b09efc0c50386b5
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Water3.unity
+    guid: 8f5e8235c1a028f42821087839143a03
+  - enabled: 0
+    path: Assets/MazeGenerator/Scenes/Water2OLD.unity
+    guid: ef13d82c025fdd04c9938bb1b1821249
+  - enabled: 0
+    path: Assets/MazeGenerator/Scenes/Water3OLD.unity
     guid: 92654a7b34f287f47ab8b43cdcbf143a
+  - enabled: 1
+    path: Assets/MazeGenerator/Scenes/EndScreen.unity
+    guid: b377390817171cc4982691e19ebb65a2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
