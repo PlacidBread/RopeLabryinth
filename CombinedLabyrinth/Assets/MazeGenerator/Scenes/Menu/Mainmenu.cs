@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace MazeGenerator.Scenes.Menu
 {
-    public class MainMenu : MonoBehaviour
+    public class Mainmenu : MonoBehaviour
     {
         [SerializeField] private GameObject menu;
         [SerializeField] private GameObject loading;
