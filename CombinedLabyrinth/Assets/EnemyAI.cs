@@ -73,4 +73,12 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            CoinTracker.decrementCoinCount();
+        }
+    }
 }
