@@ -3868,7 +3868,7 @@ PrefabInstance:
     - target: {fileID: 4917807061273326389, guid: 66d9ee87dbe52874f8d652d309c35a71,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4917807061273326390, guid: 66d9ee87dbe52874f8d652d309c35a71,
         type: 3}
@@ -3880,6 +3880,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1264076876}
+    - target: {fileID: 5259895018983388077, guid: 66d9ee87dbe52874f8d652d309c35a71,
+        type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6052304459499197048, guid: 66d9ee87dbe52874f8d652d309c35a71,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

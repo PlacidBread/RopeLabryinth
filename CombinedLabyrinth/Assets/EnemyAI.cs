@@ -16,10 +16,6 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -32,7 +28,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -41,7 +36,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    private void Patroling()
+    private void Patrolling()
     {
         Debug.Log("PATROL");
         if (!walkPointSet) SearchWalkPoint();
@@ -69,15 +64,13 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        Debug.Log("PATROL");
+        Debug.Log("CHASE");
         agent.SetDestination(player.position);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
