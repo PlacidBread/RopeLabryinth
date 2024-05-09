@@ -52,7 +52,7 @@ public class PlayerCollisions : MonoBehaviour
             }
         }
 
-        if (collider.gameObject.CompareTag("Spike"))
+        if (collider.gameObject.CompareTag("Spike") || collider.gameObject.CompareTag("enemy"))
         {
             if (coinCount <= 0 && !invincible)
             {
