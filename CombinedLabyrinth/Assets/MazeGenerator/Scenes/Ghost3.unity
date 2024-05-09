@@ -471,8 +471,8 @@ MonoBehaviour:
   ropeBarrelPrefab: {fileID: 603977926397415157, guid: ac4aed5dd904f0f479250f3aaf3801ad,
     type: 3}
   player: {fileID: 1473114301}
-  mazeWidth: 5
-  mazeHeight: 5
+  mazeWidth: 12
+  mazeHeight: 12
   mazeNodeScale: 4
   torchSpawnGap: 4
   startingMaxRopeLength: 120
@@ -3386,7 +3386,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2
+  m_text: Level 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
