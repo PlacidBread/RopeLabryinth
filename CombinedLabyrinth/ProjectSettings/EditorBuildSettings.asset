@@ -32,15 +32,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Normal3.unity
     guid: 78de60c3ff884f146829c99cd4bdd08f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Ghost1.unity
-    guid: 9bf65afbf92addd49839a3b77640dfb0
+    guid: 8dd01bed90f875a44aa6e1b08ed3c915
+  - enabled: 1
+    path: Assets/MazeGenerator/Scenes/Ghost2.unity
+    guid: 23a7a689d2cfdfb4fa36e1e7f02a4e87
   - enabled: 1
     path: Assets/MazeGenerator/Scenes/Ghost3.unity
-    guid: b5e913c607ba52c40a22e96dc0c6ae55
-  - enabled: 1
-    path: Assets/MazeGenerator/Scenes/Ghost 1.unity
-    guid: 8dd01bed90f875a44aa6e1b08ed3c915
+    guid: 402cf09dcb1946447b51d5d29811521f
   - enabled: 0
     path: Assets/MazeGenerator/Scenes/Ghost2OLD.unity
     guid: 50d4b7ed0ec2a9c4f896fadab9593474
