@@ -34,7 +34,6 @@ namespace MazeGenerator.Scenes.Menu
          public void QuitGame () {
             Application.Quit();
             Debug.Log("Quit");
-        
         }
     }
 }
